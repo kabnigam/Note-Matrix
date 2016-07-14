@@ -15,13 +15,15 @@
  */
  body {
    background-color: black;
-   font-family: Arial
+   font-family: 'PT Sans Narrow', sans-serif;
+   font-weight: 400;
  }
 
  li {
      width: 80px;
      height: 80px;
-     border: 1px solid gray;
+     /*border: 1px solid lightgray;*/
+     box-shadow: 3px -3px 5px white;
      display: inline-block;
      list-style: none;
      margin: 0 5px;
@@ -33,17 +35,20 @@
  }
 
  .note-step {
-   width: 10px;
+   width: 20px;
    height: 20px;
-   margin: 0 2px;
+   margin: 0;
  }
 
  .pad-layout {
    display: inline-block;
+   margin: 0 auto;
+   width: 450px;
+   float: right;
  }
 
  .sequencer {
-   display: inline-block;
+   display: block;
  }
 
  .sequencer-row {
@@ -57,16 +62,87 @@
  .time-step {
    width: 6px;
    height: 6px;
-   margin: 4px;
+   margin: 22px;
    border-radius: 50%;
  }
 
  button {
-   margin-left: 27%;
+    padding: 10px;
+    border-radius: 20px;
     background-color: black;
     color: white;
+    margin: 5px;
+    width: 60px;
+    font-family: 'PT Sans Narrow', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
  }
 
  .on {
    background-color: red;
  }
+
+ select {
+     margin-left: 10px;
+     align-items: inherit;
+     display: inline-block;
+     position: relative;
+     top: -7px;
+     border: 1px solid gray;
+     background-color: inherit;
+     color: white;
+
+ }
+
+ label {
+   color: white;
+   margin-left: 86%;
+ }
+
+ div.pad-layout > ul > li {
+    box-shadow: 2px 2px 10px white;
+    border: 0;
+}
+
+.playback-buttons {
+    margin: 0 auto;
+    width: 14%;
+}
+
+ul.sequencer-row > li.note-step {
+    background-color: black;
+    box-shadow: 0px -1px 5px white;
+}
+
+input {
+  background: inherit;
+  border: none;
+  color: #f114f1;
+  margin-left: 5px;
+}
+
+.timeline {
+    height: 250px;
+    width: 2px;
+    position: absolute;
+    background-color: red;
+    top: 365px;
+    /*left: 100px;*/
+}
+
+.music-box {
+    display: inline-block;
+    color: white;
+    float: right;
+    height: 270px;
+    margin: 30px;
+    width: 200px;
+    border-radius: 10px;
+    border: 1px solid white;
+}
+
+.sound {
+  color: white;
+  width: 100px;
+  height: 20px;
+}

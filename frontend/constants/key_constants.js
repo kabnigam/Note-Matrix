@@ -1,13 +1,13 @@
 const KeyConstants = {
-  49: 'one',
-  50: 'two',
-  51: 'three',
-  52: 'four',
-  53: 'five',
-  54: 'six',
-  55: 'seven',
-  56: 'eight',
-  57: 'nine'
+  65: 'one',
+  83: 'two',
+  68: 'three',
+  70: 'four',
+  71: 'five',
+  72: 'six',
+  74: 'seven',
+  75: 'eight',
+  76: 'nine'
 };
 
 module.exports = KeyConstants;

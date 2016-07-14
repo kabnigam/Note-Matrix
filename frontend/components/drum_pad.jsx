@@ -11,7 +11,6 @@ const DrumPad = React.createClass({
 
   _pressPad: function(e) {
   let pad = KeyConstants[e.which];
-  console.log(e.which);
   $(`.${pad}`).addClass('clicked');
   this._registerSound(pad);
 },
@@ -22,9 +21,9 @@ _releasePad: function(e) {
 },
 
 _registerSound: function(pad) {
-  document.getElementById(pad).pause();
-  document.getElementById(pad).currentTime = 0;
-  document.getElementById(pad).play();
+  // document.getElementById(`p-${pad}`).pause();
+  document.getElementById(`p-${pad}`).currentTime = 0;
+  document.getElementById(`p-${pad}`).play();
 },
 
   render: function() {
@@ -32,19 +31,19 @@ _registerSound: function(pad) {
       <div className='pad-layout'>
 
         <ul className="row">
-          <li className='pad one'></li>
-          <li className='pad two'></li>
-          <li className='pad three'></li>
+          <li className='pad' data-pad='one'></li>
+          <li className='pad' data-pad='two'></li>
+          <li className='pad' data-pad='three'></li>
         </ul>
         <ul className="row">
-          <li className='pad four'></li>
-          <li className='pad five'></li>
-          <li className='pad six'></li>
+          <li className='pad' data-pad='four'></li>
+          <li className='pad' data-pad='five'></li>
+          <li className='pad' data-pad='six'></li>
         </ul>
         <ul className="row">
-          <li className='pad seven'></li>
-          <li className='pad eight'></li>
-          <li className='pad nine'></li>
+          <li className='pad' data-pad='seven'></li>
+          <li className='pad' data-pad='eight'></li>
+          <li className='pad' data-pad='nine'></li>
         </ul>
 
       </div>

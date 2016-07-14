@@ -4,10 +4,12 @@ const DrumPad = require('./components/drum_pad.jsx');
 const Sequencer = require('./components/sequencer.jsx');
 const Sounds = require('./components/sounds.jsx');
 
+
 const App = React.createClass({
   render: function() {
     return (
       <div>
+
         <Sounds />
         <DrumPad />
         <Sequencer />

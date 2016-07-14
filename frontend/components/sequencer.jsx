@@ -4,158 +4,189 @@ const SeqRow = require('./seq_row');
 
 const Sequencer = React.createClass({
   getInitialState: function() {
-    return {steps: 16, note: 4, sig_top: 4, sig_bottom: 4, playing: false, bpm: 140};
+    return {steps: 16, sig_top: 4, sig_bottom: 4, playing: false, bpm: 140, shortest_note: 4};
   },
-  _handeClick: function(e) {
-    if ($(e.target).hasClass('clicked')) {
-      $(e.target).removeClass('clicked');
-    } else {
-      $(e.target).addClass('clicked');
-    }
-  },
+
   _handlePlay: function() {
     this.setState({playing: true});
   },
   _handleStop: function() {
     this.setState({playing: false});
     window.clearInterval(this.interval);
+    window.clearInterval(this.lineInterval);
+    $('.timeline').attr("style",`left: 100px`);
     $('li.time-step').removeClass('on');
+  },
+  _setShortestNote: function(n) {
+    this.setState({shortest_note: n});
+    if (this.state.playing) {
+
+      this._handleStop();
+      this._handlePlay();
+    }
   },
   _startPlaying: function() {
     // let timeout = (NoteConstants[this.state.note]/this.state.bpm) * 1000;
-    let timeout = (60/this.state.bpm) * 1000;
+    let timeout = ((60/this.state.bpm) * 1000) * (this.state.sig_top/this.state.shortest_note);
     let i = 0;
-    $(`[data-num=${i}]`).addClass('on');
+    let j = 0;
+    $(`[data-num=${j}]`).addClass('on');
     this._playColumn(i);
     this.interval = window.setInterval( () => {
-      $(`[data-num=${i}]`).removeClass('on');
+      if (j%1 === 0) {
+        $(`[data-num=${j}]`).removeClass('on');
+      }
       i++;
-      $(`[data-num=${i}]`).addClass('on');
+      j = j + (1 * (this.state.sig_top/this.state.shortest_note));
+      if (j%1 === 0) {
+        $(`[data-num=${j}]`).addClass('on');
+      }
+
       this._playColumn(i);
-      if (i === 16) {
+      if (i === 16/(this.state.sig_top/this.state.shortest_note) ) {
         i = 0;
-        $(`[data-num=${i}]`).addClass('on');
+        j = 0;
+        $(`[data-num=${j}]`).addClass('on');
         this._playColumn(i);
       }
     }, timeout);
+    let current = 100;
+    this.lineInterval = window.setInterval(() => {
+      $('.timeline').attr("style",`left: ${current}px`);
+      current += 802/((60/this.state.bpm) * 16)/100;
+      if (current > 902) {
+        current = 100;
+      }
+    }, 10);
+  },
+
+  _handleReset: function() {
+    let clicked = $('.clicked').slice();
+    for (var i = 0; i < clicked.length; i++) {
+      $('.clicked').eq(0).removeClass('clicked');
+    }
+  },
+
+  _setBPM: function(e) {
+    if (!isNaN(parseFloat(e.target.value))) {
+      this.setState({bpm: parseFloat(e.target.value)});
+    } else if (e.target.value === '') {
+      this.setState({bpm: ''});
+    }
+
   },
 
   _playColumn: function(j) {
     let rows = $('ul.sequencer-row');
     for (var i = 0; i < rows.length; i++) {
-      if ($(rows[i].children[j]).hasClass('clicked')) {
+      let ratio = (16/(this.state.sig_top/this.state.shortest_note))/(rows[i].children.length-1);
+      if (j%ratio === 0 && $(rows[i].children[j/ratio]).hasClass('clicked')) {
 
-        document.getElementById(rows[i].dataset.pad).pause();
-        document.getElementById(rows[i].dataset.pad).currentTime = 0;
-        document.getElementById(rows[i].dataset.pad).play();
+        // document.getElementById(`s-${rows[i].dataset.pad}`).pause();
+        document.getElementById(`s-${rows[i].dataset.pad}`).currentTime = 0;
+        document.getElementById(`s-${rows[i].dataset.pad}`).play();
       }
     }
   },
 
   render: function() {
     this.rows = [[],[],[],[],[],[],[],[],[]];
-    this.rows.forEach(row => {
-      for (var i = 0; i < this.state.steps; i++) {
-        row.push();
-      }
-    });
+    // this.rows.forEach(row => {
+    //   for (var i = 0; i < this.state.steps; i++) {
+    //     row.push();
+    //   }
+    // });
     let timeRow = [];
     for (var i = 0; i < 16; i++) {
-      timeRow.push(<li className='note-step time-step' data-num={i}></li>);
+      timeRow.push(<li className='time-step' data-num={i}></li>);
     }
-    this.rows.push(timeRow);
     let playback = <button onClick={this._handlePlay}>PLAY</button>;
     if (this.state.playing) {
+
       this._startPlaying();
       playback = <button onClick={this._handleStop}>STOP</button>;
     }
 
     return (
       <div className='sequencer'>
+        <label>
+          BPM:
+          <input type='text' onChange={this._setBPM} value={this.state.bpm}></input>
+        </label>
         <table>
           <tr>
             <td></td>
             <td>
-              <ul className='sequencer-row' data-pad='nine'>
-                {this.rows[0]}
-              </ul>
+              <SeqRow setNote={this._setShortestNote} steps={this.state.steps} pad='nine'/>
             </td>
           </tr>
           <tr>
             <td></td>
             <td>
-              <ul className='sequencer-row' data-pad='eight'>
-                {this.rows[1]}
-              </ul>
+              <SeqRow setNote={this._setShortestNote} steps={this.state.steps} pad='eight'/>
             </td>
           </tr>
           <tr>
             <td></td>
             <td>
-              <ul className='sequencer-row' data-pad='seven'>
-                {this.rows[2]}
-              </ul>
+              <SeqRow setNote={this._setShortestNote} steps={this.state.steps} pad='seven'/>
             </td>
           </tr>
           <tr>
             <td></td>
             <td>
-              <ul className='sequencer-row' data-pad='six'>
-                {this.rows[3]}
-              </ul>
+              <SeqRow setNote={this._setShortestNote} steps={this.state.steps} pad='six'/>
             </td>
           </tr>
           <tr>
-            <td></td>
+            <td>Hi-Hat 2</td>
             <td>
-              <ul className='sequencer-row' data-pad='five'>
-                {this.rows[4]}
-              </ul>
+              <SeqRow setNote={this._setShortestNote} steps={this.state.steps} pad='five'/>
             </td>
           </tr>
           <tr>
-            <td></td>
+            <td>Hi-Hat 1</td>
             <td>
-              <ul className='sequencer-row' data-pad='four'>
-                {this.rows[5]}
-              </ul>
-            </td>
-          </tr>
-          <tr>
-            <td>Hi-Hat</td>
-            <td>
-              <ul className='sequencer-row' data-pad='three'>
-                {this.rows[6]}
-              </ul>
+              <SeqRow setNote={this._setShortestNote} steps={this.state.steps} pad='four'/>
             </td>
           </tr>
           <tr>
             <td>Snare</td>
             <td>
-              <ul className='sequencer-row' data-pad='two'>
-                {this.rows[7]}
-              </ul>
+              <SeqRow setNote={this._setShortestNote} steps={this.state.steps} pad='three'/>
+            </td>
+          </tr>
+          <tr>
+            <td>Kick</td>
+            <td>
+              <SeqRow setNote={this._setShortestNote} steps={this.state.steps} pad='two'/>
             </td>
           </tr>
           <tr>
             <td>Sub</td>
             <td>
-              <ul className='sequencer-row' data-pad='one'>
-                {this.rows[8]}
-              </ul>
+              <SeqRow setNote={this._setShortestNote} steps={this.state.steps} pad='one'/>
             </td>
           </tr>
           <tr>
             <td></td>
             <td>
               <ul className='sequencer-row timer-row'>
-                {this.rows[9]}
+                {timeRow}
               </ul>
             </td>
           </tr>
 
         </table>
-        {playback}
+        <div className="timeline" style={{left: '100'}}>
+
+        </div>
+        <div className='playback-buttons'>
+
+          {playback}
+          <button onClick={this._handleReset}>RESET</button>
+        </div>
+
       </div>
     );
   }
