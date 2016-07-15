@@ -115,55 +115,55 @@ const Sequencer = React.createClass({
         </label>
         <table>
           <tr>
-            <td></td>
+            <td className='instrument-name' data-seq='s-nine'>Empty</td>
             <td>
               <SeqRow setNote={this._setShortestNote} steps={this.state.steps} pad='nine'/>
             </td>
           </tr>
           <tr>
-            <td></td>
+            <td className='instrument-name' data-seq='s-eight'>Empty</td>
             <td>
               <SeqRow setNote={this._setShortestNote} steps={this.state.steps} pad='eight'/>
             </td>
           </tr>
           <tr>
-            <td></td>
+            <td className='instrument-name' data-seq='s-seven'>Empty</td>
             <td>
               <SeqRow setNote={this._setShortestNote} steps={this.state.steps} pad='seven'/>
             </td>
           </tr>
           <tr>
-            <td></td>
+            <td className='instrument-name' data-seq='s-six'>Biggie 2</td>
             <td>
               <SeqRow setNote={this._setShortestNote} steps={this.state.steps} pad='six'/>
             </td>
           </tr>
           <tr>
-            <td>Hi-Hat 2</td>
+            <td className='instrument-name' data-seq='s-five'>Biggie 5</td>
             <td>
               <SeqRow setNote={this._setShortestNote} steps={this.state.steps} pad='five'/>
             </td>
           </tr>
           <tr>
-            <td>Hi-Hat 1</td>
+            <td className='instrument-name' data-seq='s-four'>Hi-Hat 1</td>
             <td>
               <SeqRow setNote={this._setShortestNote} steps={this.state.steps} pad='four'/>
             </td>
           </tr>
           <tr>
-            <td>Snare</td>
+            <td className='instrument-name' data-seq='s-three'>Snare</td>
             <td>
               <SeqRow setNote={this._setShortestNote} steps={this.state.steps} pad='three'/>
             </td>
           </tr>
           <tr>
-            <td>Kick</td>
+            <td className='instrument-name' data-seq='s-two'>Kick</td>
             <td>
               <SeqRow setNote={this._setShortestNote} steps={this.state.steps} pad='two'/>
             </td>
           </tr>
           <tr>
-            <td>Sub</td>
+            <td className='instrument-name' data-seq='s-one'>Sub</td>
             <td>
               <SeqRow setNote={this._setShortestNote} steps={this.state.steps} pad='one'/>
             </td>

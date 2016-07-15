@@ -4,77 +4,85 @@ const MusicBox = require('./music_box');
 
 const Sounds = React.createClass({
   getInitialState: function() {
-    return {sounds: {
-      'p-one':'https://s3-us-west-1.amazonaws.com/soundsamples/808_sub.wav', 'p-two':'https://s3-us-west-1.amazonaws.com/soundsamples/Squad+Snare+5.wav'}};
+    return {
+      sounds: {},
+      seqSounds: {
+        's-one': "https://s3-us-west-1.amazonaws.com/soundsamples/808_sub.wav",
+        's-two': "https://s3-us-west-1.amazonaws.com/soundsamples/Squad+Kick+3.wav",
+        's-three':'https://s3-us-west-1.amazonaws.com/soundsamples/Squad+Snare+5.wav' ,
+        's-four': 'https://s3-us-west-1.amazonaws.com/soundsamples/Squad+HiHat+3.wav',
+        's-five': 'https://s3-us-west-1.amazonaws.com/soundsamples/biggie5.wav',
+        's-six':'https://s3-us-west-1.amazonaws.com/soundsamples/biggie2.wav' }
+    };
   },
-  _handleDrop: function(url, event, ui) {
+  _handleDrop: function(e, ui) {
 
-    $(`#p-${event.target.getAttribute('data-pad')}`).children().attr('src', url);
+    // $(`#p-${event.target.getAttribute('data-pad')}`).children().attr('src', url);
     // this.setState({change: true});
+    // let temp = this.state.sounds;
+    // if (`p-${event.target.getAttribute('data-pad')}` === 'p-one') {
+    //   alert('Sorry, but you cannot change the first pad. Try selecting a new kit or changing other pads!');
+    // } else {
+
+    //   if (Object.keys(temp).includes(`p-${event.target.getAttribute('data-pad')}`)) {
+    //     delete temp[`p-${event.target.getAttribute('data-pad')}`];
+    //     this.setState({sounds: temp});
+    //
+    //
+    //   temp[`p-${event.target.getAttribute('data-pad')}`] = url;
+    //   this.setState({sounds: temp});
+    // }
+
+    if (ui.draggable.context.dataset.kit && e.target.attributes[0].value === "current-kit ui-droppable") {
+
+      this.setState({sounds: {}});
+      let urls = ui.draggable.context.dataset.kit.split(',');
+
+      let temp = {};
+      for (var i = 0; i < urls.length; i++) {
+
+        temp[`p${i}`] = urls[i];
+      }
+      this.setState({sounds: temp});
+
+      $(e.target).html(ui.draggable.context.innerHTML);
+    }
+    else if (ui.draggable.context.dataset.url && e.target.attributes[0].value === "instrument-name ui-droppable") {
+      let temp = this.state.seqSounds;
+      this.setState({seqSounds: {}});
+      temp[e.target.attributes[1].value] = ui.draggable.context.dataset.url;
+      $(e.target).html(ui.draggable.context.innerHTML);
+      this.setState({seqSounds: temp});
+    }
   },
 
   render: function() {
+    let that = this;
+    let pads = Object.keys(this.state.sounds).map(id => {
+
+      return (
+        <audio id={id}>
+          <source src={this.state.sounds[id]} />
+        </audio>
+      );
+    });
+    let seqs = Object.keys(this.state.seqSounds).map(id => {
+
+      return (
+        <audio id={id}>
+          <source src={this.state.seqSounds[id]} />
+        </audio>
+      );
+    });
 
     return (
       <div className='sounds'>
         <MusicBox drop={this._handleDrop}/>
         <div className='pad-sounds'>
-          <audio id='p-one'>
-            <source src='https://s3-us-west-1.amazonaws.com/soundsamples/808_sub.wav' />
-          </audio>
-          <audio id='p-two'>
-            <source src='https://s3-us-west-1.amazonaws.com/soundsamples/Squad+Snare+5.wav' />
-          </audio>
-          <audio id='p-three'>
-            <source src='https://s3-us-west-1.amazonaws.com/soundsamples/Squad+HiHat+3.wav' />
-          </audio>
-          <audio id='p-four'>
-            <source src='https://s3-us-west-1.amazonaws.com/soundsamples/Squad+HiHat+4.wav' />
-          </audio>
-          <audio id='p-five'>
-            <source src='https://s3-us-west-1.amazonaws.com/soundsamples/biggie2.wav' />
-          </audio>
-          <audio id='p-six'>
-            <source src='' />
-          </audio>
-          <audio id='p-seven'>
-            <source src='https://s3-us-west-1.amazonaws.com/soundsamples/biggie4.wav' />
-          </audio>
-          <audio id='p-eight'>
-            <source src='https://s3-us-west-1.amazonaws.com/soundsamples/biggie5.wav' />
-          </audio>
-          <audio id='p-nine'>
-            <source src='https://s3-us-west-1.amazonaws.com/soundsamples/biggie1.wav' />
-          </audio>
+          {pads}
         </div>
         <div className='sequencer-sounds'>
-          <audio id='s-one'>
-            <source src='https://s3-us-west-1.amazonaws.com/soundsamples/808_sub.wav' />
-          </audio>
-          <audio id='s-two'>
-            <source src='https://s3-us-west-1.amazonaws.com/soundsamples/Squad+Kick+3.wav' />
-          </audio>
-          <audio id='s-three'>
-            <source src='https://s3-us-west-1.amazonaws.com/soundsamples/Squad+Snare+5.wav' />
-          </audio>
-          <audio id='s-four'>
-            <source src='https://s3-us-west-1.amazonaws.com/soundsamples/Squad+HiHat+3.wav' />
-          </audio>
-          <audio id='s-five'>
-            <source src='https://s3-us-west-1.amazonaws.com/soundsamples/Squad+HiHat+4.wav' />
-          </audio>
-          <audio id='s-six'>
-            <source src='https://s3-us-west-1.amazonaws.com/soundsamples/biggie3.wav' />
-          </audio>
-          <audio id='s-seven'>
-            <source src='https://s3-us-west-1.amazonaws.com/soundsamples/biggie4.wav' />
-          </audio>
-          <audio id='s-eight'>
-            <source src='https://s3-us-west-1.amazonaws.com/soundsamples/biggie5.wav' />
-          </audio>
-          <audio id='s-nine'>
-            <source src='https://s3-us-west-1.amazonaws.com/soundsamples/biggie1.wav' />
-          </audio>
+          {seqs}
         </div>
       </div>
     );
