@@ -119,16 +119,11 @@ const Sequencer = React.createClass({
           <input type='text' onChange={this._setBPM} value={this.state.bpm}></input>
         </label>
         <table>
+          
           <tr>
-            <td className='instrument-name' data-seq='s-eight'>Empty</td>
+            <td className='instrument-name' data-seq='s-seven'>Lex Chant</td>
             <td>
-              <SeqRow setNote={this._setShortestNote} steps={this.state.steps} pad='eight'/>
-            </td>
-          </tr>
-          <tr>
-            <td className='instrument-name' data-seq='s-seven'>Empty</td>
-            <td>
-              <SeqRow setNote={this._setShortestNote} steps={this.state.steps} pad='seven'/>
+              <SeqRow setNote={this._setShortestNote} steps={this.state.steps} pad='seven' clicked={[1,5,9,13]}/>
             </td>
           </tr>
           <tr>
@@ -176,10 +171,9 @@ const Sequencer = React.createClass({
             </td>
           </tr>
 
+          <div className="timeline" style={{left: '100'}} />
         </table>
-        <div className="timeline" style={{left: '100'}}>
 
-        </div>
         <div className='playback-buttons'>
 
           {playback}

@@ -46,6 +46,9 @@ const MusicBox = React.createClass({
       $('.instrument-name').droppable({
         drop: this.props.drop
       });
+      $('.pad').droppable({
+        drop: this.props.drop
+      });
     }
 
   },
@@ -66,7 +69,7 @@ const MusicBox = React.createClass({
 
       let els = $();
       instruments.forEach(inst => {
-        els = els.add(`<div class='instrument-element' data-url=${inst.url}>${inst.name}</div>`);
+        els = els.add(`<div class='instrument-element'  data-url=${inst.url}>${inst.name}</div>`);
       });
       $(e.target).append(els);
       $($('.instrument-element')).addEventListener('mouseover', () => {

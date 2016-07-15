@@ -42,7 +42,7 @@ _registerSound: function(pad) {
     return (
       <div className='pad-layout'>
         <div className="current-kit">
-          Drag kit here
+          Drag Kit Here
         </div>
         <ul className="row">
           <li className='pad p0' data-pad='0'><p>q</p></li>

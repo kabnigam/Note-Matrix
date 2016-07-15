@@ -13,6 +13,7 @@ sounds = Sound.create([
   {name: 'Kick 1', url: "https://s3-us-west-1.amazonaws.com/soundsamples/Squad+Kick+3.wav", instrument: 'Drums', kit: '808'},
   {name: 'HiHat 1', url: "https://s3-us-west-1.amazonaws.com/soundsamples/Squad+HiHat+3.wav", instrument: 'Drums', kit: '808'},
   {name: 'HiHat 2', url: "https://s3-us-west-1.amazonaws.com/soundsamples/Squad+HiHat+4.wav", instrument: 'Drums', kit: '808'},
+  {name: 'Lex Chant', url: "https://s3-us-west-1.amazonaws.com/soundsamples/LEX+Chant.wav", instrument: 'Drums', kit: '808'},
   {name: 'Biggie 1', url: "https://s3-us-west-1.amazonaws.com/soundsamples/biggie1.wav", instrument: 'Vocals', kit: 'Biggie 140 BPM'},
   {name: 'Biggie 2', url: "https://s3-us-west-1.amazonaws.com/soundsamples/biggie2.wav", instrument: 'Vocals', kit: 'Biggie 140 BPM'},
   {name: 'Biggie 4', url: "https://s3-us-west-1.amazonaws.com/soundsamples/biggie4.wav", instrument: 'Vocals', kit: 'Biggie 140 BPM'},

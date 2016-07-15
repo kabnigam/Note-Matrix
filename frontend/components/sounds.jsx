@@ -12,28 +12,12 @@ const Sounds = React.createClass({
         's-three':'https://s3-us-west-1.amazonaws.com/soundsamples/Squad+Snare+5.wav' ,
         's-four': 'https://s3-us-west-1.amazonaws.com/soundsamples/Squad+HiHat+3.wav',
         's-five': 'https://s3-us-west-1.amazonaws.com/soundsamples/biggie5.wav',
-        's-six':'https://s3-us-west-1.amazonaws.com/soundsamples/biggie2.wav' }
+        's-six':'https://s3-us-west-1.amazonaws.com/soundsamples/biggie2.wav',
+        's-seven':'https://s3-us-west-1.amazonaws.com/soundsamples/LEX+Chant.wav' }
     };
   },
   _handleDrop: function(e, ui) {
-
-    // $(`#p-${event.target.getAttribute('data-pad')}`).children().attr('src', url);
-    // this.setState({change: true});
-    // let temp = this.state.sounds;
-    // if (`p-${event.target.getAttribute('data-pad')}` === 'p-one') {
-    //   alert('Sorry, but you cannot change the first pad. Try selecting a new kit or changing other pads!');
-    // } else {
-
-    //   if (Object.keys(temp).includes(`p-${event.target.getAttribute('data-pad')}`)) {
-    //     delete temp[`p-${event.target.getAttribute('data-pad')}`];
-    //     this.setState({sounds: temp});
-    //
-    //
-    //   temp[`p-${event.target.getAttribute('data-pad')}`] = url;
-    //   this.setState({sounds: temp});
-    // }
-
-
+    
     if (ui.draggable.context.dataset.kit && e.target.attributes[0].value === "current-kit ui-droppable") {
       $('p.inst').remove();
       this.setState({sounds: {}});
@@ -55,6 +39,18 @@ const Sounds = React.createClass({
       $(e.target).html(ui.draggable.context.innerHTML);
       this.setState({seqSounds: temp});
     }
+
+    else if (ui.draggable.context.dataset.url && e.target.attributes[0].value.includes('pad')) {
+      let temp = this.state.sounds;
+      $('p.inst').remove();
+      this.setState({sounds: {}});
+
+      temp[`p${e.target.attributes[1].value}`] = [ui.draggable.context.dataset.url, ui.draggable.context.innerHTML];
+
+
+      this.setState({sounds: temp});
+    }
+
   },
 
   render: function() {

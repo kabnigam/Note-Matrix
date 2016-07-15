@@ -49,6 +49,7 @@
 
  .sequencer {
    display: block;
+   width: 1000px;
  }
 
  .sequencer-row {
@@ -64,6 +65,7 @@
    height: 6px;
    margin: 22px;
    border-radius: 50%;
+   display: none;
  }
 
  button {
@@ -108,7 +110,7 @@
 
 .playback-buttons {
     margin: 0 auto;
-    width: 14%;
+    width: 18%;
 }
 
 ul.sequencer-row > li.note-step {
@@ -126,12 +128,12 @@ input {
 }
 
 .timeline {
-    height: 220px;
+    height: 199px;
     width: 2px;
     position: absolute;
     background-color: red;
-    top: 363px;
-    /*left: 100px;*/
+    top: 0;
+
 }
 
 .music-box {
@@ -159,6 +161,10 @@ li.sound-kit {
     text-align: center;
     /* display: inline; */
     cursor: pointer;
+    z-index: 1;
+    background-color: black;
+
+    box-shadow: 0px -1px 5px white;
 }
 
 li.kit-type {
@@ -210,4 +216,23 @@ p.inst {
     font-size: 12px;
     position: absolute;
     margin-left: 5px;
+}
+
+table {
+  position: relative;
+}
+
+.upper-container {
+
+  width: 1100px;
+  margin: 0 auto;
+}
+
+.sequencer {
+    display: block;
+
+    margin: 0 auto;
+
+    width: 970px;
+    padding: 0 65px;
 }
