@@ -45,19 +45,19 @@ _registerSound: function(pad) {
           Drag kit here
         </div>
         <ul className="row">
-          <li className='pad' data-pad='0'></li>
-          <li className='pad' data-pad='1'></li>
-          <li className='pad' data-pad='2'></li>
+          <li className='pad p0' data-pad='0'><p>q</p></li>
+          <li className='pad p1' data-pad='1'><p>w</p></li>
+          <li className='pad p2' data-pad='2'><p>e</p></li>
         </ul>
         <ul className="row">
-          <li className='pad' data-pad='3'></li>
-          <li className='pad' data-pad='4'></li>
-          <li className='pad' data-pad='5'></li>
+          <li className='pad p3' data-pad='3'><p>a</p></li>
+          <li className='pad p4' data-pad='4'><p>s</p></li>
+          <li className='pad p5' data-pad='5'><p>d</p></li>
         </ul>
         <ul className="row">
-          <li className='pad' data-pad='6'></li>
-          <li className='pad' data-pad='7'></li>
-          <li className='pad' data-pad='8'></li>
+          <li className='pad p6' data-pad='6'><p>z</p></li>
+          <li className='pad p7' data-pad='7'><p>x</p></li>
+          <li className='pad p8' data-pad='8'><p>c</p></li>
         </ul>
 
       </div>

@@ -21,7 +21,7 @@ const MusicBox = React.createClass({
   _drag: function(e) {
 
     if (e.target.attributes[1].name === 'data-kit') {
-      debugger
+
       $(e.target).draggable({
         helper: 'clone',
         start: function(ev, ui)
@@ -91,25 +91,28 @@ const MusicBox = React.createClass({
           for (var j = 0; j < Object.keys(instruments[type]).length; j++) {
             let kit = Object.keys(instruments[type])[j];
             let urls = instruments[type][kit].map(obj => {return obj.url;});
-
+            let sounds = instruments[type][kit].map(obj => {return obj.name;});
+            sounds = sounds.join(',');
             urls = urls.join(',');
-            vocals.push(<li className='sound-kit' data-kit={urls} onMouseOver={this._drag} onClick={this._showMenu.bind(this, instruments[type][kit])}>{kit}</li>);
+            vocals.push(<li className='sound-kit' data-kit={urls} data-sounds={sounds} onMouseOver={this._drag} onClick={this._showMenu.bind(this, instruments[type][kit])}>{kit}</li>);
           }
         } else if (type==='Drums') {
           for (var j = 0; j < Object.keys(instruments[type]).length; j++) {
             let kit = Object.keys(instruments[type])[j];
             let urls = instruments[type][kit].map(obj => {return obj.url;});
-
+            let sounds = instruments[type][kit].map(obj => {return obj.name;});
             urls = urls.join(',');
-            drums.push(<li className='sound-kit' data-kit={urls} onMouseOver={this._drag} onClick={this._showMenu.bind(this, instruments[type][kit])}>{kit}</li>);
+            sounds = sounds.join(',');
+            drums.push(<li className='sound-kit' data-kit={urls} data-sounds={sounds} onMouseOver={this._drag} onClick={this._showMenu.bind(this, instruments[type][kit])}>{kit}</li>);
           }
         } else if (type==='Instrument') {
           for (var j = 0; j < Object.keys(instruments[type]).length; j++) {
             let kit = Object.keys(instruments[type])[j];
             let urls = instruments[type][kit].map(obj => {return obj.url;});
-
+            let sounds = instruments[type][kit].map(obj => {return obj.name;});
             urls = urls.join(',');
-            music.push(<li className='sound-kit' data-kit={urls} onMouseOver={this._drag} onClick={this._showMenu.bind(this, instruments[type][kit])}>{kit}</li>);
+            sounds = sounds.join(',');
+            music.push(<li className='sound-kit' data-kit={urls} data-sounds={sounds} onMouseOver={this._drag} onClick={this._showMenu.bind(this, instruments[type][kit])}>{kit}</li>);
           }
         }
       }

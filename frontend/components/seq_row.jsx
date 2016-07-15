@@ -3,14 +3,17 @@ const NoteConstants = require('../constants/note_constants');
 
 const SeqRow = React.createClass({
   getInitialState: function() {
-
-    return {note: 4, clicked: []};
+    let clicked = [];
+    if (this.props.clicked) {
+      clicked = this.props.clicked;
+    }
+    return {note: 4, clicked: clicked};
   },
   componentDidMount: function() {
 
 
     document.addEventListener("keydown", function(e){
-      if (e.which === 91) {
+      if (e.which === 16) {
         $('li.note-step').mouseenter(function() {
           if ($(this).hasClass('clicked')) {
             $(this).removeClass('clicked');
@@ -23,7 +26,7 @@ const SeqRow = React.createClass({
     }, false);
 
     document.addEventListener("keyup", function(e){
-      if (e.which === 91) {
+      if (e.which === 16) {
         $('li.note-step').off("mouseenter");
       }
     }, false);
@@ -86,9 +89,8 @@ const SeqRow = React.createClass({
 
 
   render: function() {
-
     let row = this._makeRow();
-    
+
     for (var i = 0; i < row.length; i++) {
       if (this.state.clicked.includes(i)) {
         row[i] = <li className='note-step clicked'

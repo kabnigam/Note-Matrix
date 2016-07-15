@@ -83,8 +83,13 @@ const Sequencer = React.createClass({
       if (j%ratio === 0 && $(rows[i].children[j/ratio]).hasClass('clicked')) {
 
         // document.getElementById(`s-${rows[i].dataset.pad}`).pause();
-        document.getElementById(`s-${rows[i].dataset.pad}`).currentTime = 0;
+        if (document.getElementById(`s-${rows[i].dataset.pad}`).currentTime) {
+          document.getElementById(`s-${rows[i].dataset.pad}`).currentTime = 0;
+        }
         document.getElementById(`s-${rows[i].dataset.pad}`).play();
+        if (document.getElementById(`s-${rows[i].dataset.pad}`).children[0].attributes[0].value === "https://s3-us-west-1.amazonaws.com/soundsamples/808_sub.wav") {
+          $('.pad-layout').effect("shake", {times: 30, distance: 1});
+        }
       }
     }
   },
@@ -115,12 +120,6 @@ const Sequencer = React.createClass({
         </label>
         <table>
           <tr>
-            <td className='instrument-name' data-seq='s-nine'>Empty</td>
-            <td>
-              <SeqRow setNote={this._setShortestNote} steps={this.state.steps} pad='nine'/>
-            </td>
-          </tr>
-          <tr>
             <td className='instrument-name' data-seq='s-eight'>Empty</td>
             <td>
               <SeqRow setNote={this._setShortestNote} steps={this.state.steps} pad='eight'/>
@@ -135,13 +134,13 @@ const Sequencer = React.createClass({
           <tr>
             <td className='instrument-name' data-seq='s-six'>Biggie 2</td>
             <td>
-              <SeqRow setNote={this._setShortestNote} steps={this.state.steps} pad='six'/>
+              <SeqRow setNote={this._setShortestNote} steps={this.state.steps} pad='six' clicked={[0,2,3,5,6]}/>
             </td>
           </tr>
           <tr>
             <td className='instrument-name' data-seq='s-five'>Biggie 5</td>
             <td>
-              <SeqRow setNote={this._setShortestNote} steps={this.state.steps} pad='five'/>
+              <SeqRow setNote={this._setShortestNote} steps={this.state.steps} pad='five' clicked={[13]}/>
             </td>
           </tr>
           <tr>
@@ -153,7 +152,7 @@ const Sequencer = React.createClass({
           <tr>
             <td className='instrument-name' data-seq='s-three'>Snare</td>
             <td>
-              <SeqRow setNote={this._setShortestNote} steps={this.state.steps} pad='three'/>
+              <SeqRow setNote={this._setShortestNote} steps={this.state.steps} pad='three' clicked={[2,6,10,14]}/>
             </td>
           </tr>
           <tr>
@@ -165,7 +164,7 @@ const Sequencer = React.createClass({
           <tr>
             <td className='instrument-name' data-seq='s-one'>Sub</td>
             <td>
-              <SeqRow setNote={this._setShortestNote} steps={this.state.steps} pad='one'/>
+              <SeqRow setNote={this._setShortestNote} steps={this.state.steps} pad='one' clicked={[0,3,5,7]}/>
             </td>
           </tr>
           <tr>

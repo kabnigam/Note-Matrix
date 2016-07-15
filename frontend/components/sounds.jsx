@@ -33,15 +33,16 @@ const Sounds = React.createClass({
     //   this.setState({sounds: temp});
     // }
 
-    if (ui.draggable.context.dataset.kit && e.target.attributes[0].value === "current-kit ui-droppable") {
 
+    if (ui.draggable.context.dataset.kit && e.target.attributes[0].value === "current-kit ui-droppable") {
+      $('p.inst').remove();
       this.setState({sounds: {}});
       let urls = ui.draggable.context.dataset.kit.split(',');
-
+      let sounds = ui.draggable.context.dataset.sounds.split(',');
       let temp = {};
       for (var i = 0; i < urls.length; i++) {
 
-        temp[`p${i}`] = urls[i];
+        temp[`p${i}`] = [urls[i], sounds[i]];
       }
       this.setState({sounds: temp});
 
@@ -59,10 +60,10 @@ const Sounds = React.createClass({
   render: function() {
     let that = this;
     let pads = Object.keys(this.state.sounds).map(id => {
-
+      $(`.pad.${id}`).append(`<p class='inst'>${this.state.sounds[id][1]}</p>`);
       return (
         <audio id={id}>
-          <source src={this.state.sounds[id]} />
+          <source src={this.state.sounds[id][0]} />
         </audio>
       );
     });

@@ -3,6 +3,7 @@ const ReactDOM = require ('react-dom');
 const DrumPad = require('./components/drum_pad.jsx');
 const Sequencer = require('./components/sequencer.jsx');
 const Sounds = require('./components/sounds.jsx');
+const Instructions = require('./components/instructions.jsx');
 
 
 const App = React.createClass({
@@ -12,6 +13,7 @@ const App = React.createClass({
 
         <Sounds />
         <DrumPad />
+        <Instructions />
         <Sequencer />
       </div>
     );
