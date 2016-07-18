@@ -8,16 +8,28 @@ const Sounds = React.createClass({
       sounds: {},
       seqSounds: {
         's-one': "https://s3-us-west-1.amazonaws.com/soundsamples/808_sub.wav",
-        's-two': "https://s3-us-west-1.amazonaws.com/soundsamples/Squad+Kick+3.wav",
-        's-three':'https://s3-us-west-1.amazonaws.com/soundsamples/Squad+Snare+5.wav' ,
-        's-four': 'https://s3-us-west-1.amazonaws.com/soundsamples/Squad+HiHat+3.wav',
+        's-two': "https://s3-us-west-1.amazonaws.com/soundsamples/Squad+Snare+5.wav",
+        's-three':'https://s3-us-west-1.amazonaws.com/soundsamples/Squad+HiHat+3.wav',
+        's-four': 'https://s3-us-west-1.amazonaws.com/soundsamples/biggie1.wav',
         's-five': 'https://s3-us-west-1.amazonaws.com/soundsamples/biggie5.wav',
         's-six':'https://s3-us-west-1.amazonaws.com/soundsamples/biggie2.wav',
         's-seven':'https://s3-us-west-1.amazonaws.com/soundsamples/LEX+Chant.wav' }
     };
   },
+  componentDidMount: function() {
+
+    $('.current-kit').html('Biggie 140 BPM');
+    let sounds = {
+      'p0': ['https://s3-us-west-1.amazonaws.com/soundsamples/biggie1.wav', 'Biggie 1'],
+      'p1': ['https://s3-us-west-1.amazonaws.com/soundsamples/biggie2.wav', 'Biggie 2'],
+      'p2': ['https://s3-us-west-1.amazonaws.com/soundsamples/biggie4.wav', 'Biggie 4'],
+      'p3': ['https://s3-us-west-1.amazonaws.com/soundsamples/biggie5.wav', 'Biggie 5'],
+    };
+    this.setState({sounds: sounds});
+  },
+
   _handleDrop: function(e, ui) {
-    
+
     if (ui.draggable.context.dataset.kit && e.target.attributes[0].value === "current-kit ui-droppable") {
       $('p.inst').remove();
       this.setState({sounds: {}});
@@ -54,8 +66,10 @@ const Sounds = React.createClass({
   },
 
   render: function() {
+
     let that = this;
     let pads = Object.keys(this.state.sounds).map(id => {
+
       $(`.pad.${id}`).append(`<p class='inst'>${this.state.sounds[id][1]}</p>`);
       return (
         <audio id={id}>

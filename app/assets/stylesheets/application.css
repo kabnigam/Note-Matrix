@@ -116,7 +116,7 @@
 ul.sequencer-row > li.note-step {
     background-color: black;
     box-shadow: 0px -1px 5px white;
-
+    text-align: center;
 }
 
 input {
@@ -201,6 +201,7 @@ ul.kit-holder {
 
 h2 {
   margin: 0;
+
 }
 
 .instructions {
@@ -235,4 +236,59 @@ table {
 
     width: 970px;
     padding: 0 65px;
+}
+
+.tutorial {
+    height: 700px;
+    width: 1150px;
+    background-color: black;
+    position: absolute;
+    top: 0;
+    z-index: 5;
+    color: white;
+
+}
+
+h1 {
+    font-size: 70px;
+    margin: 60px;
+    margin-bottom: 0px;
+    margin-top: 40px;
+}
+
+li.beat {
+    width: 50px;
+    height: 0;
+    box-shadow: none;
+    margin: 0;
+    text-align: center;
+}
+
+.add-beat {
+  display: none;
+  margin-left: 60px;
+}
+.add-freestyle {
+  display: none;
+  margin-left: 60px;
+}
+.second-freestyle {
+  display: none;
+  margin-left: 60px;
+}
+.end-tutorial {
+  display: none;
+  margin-left: 60px;
+}
+
+.skip {
+  color: aqua;
+  cursor: pointer;
+  margin-left: 67px;
+    display: inline-block;
+}
+
+.skip:hover {
+  cursor: pointer;
+  color: aqua;  
 }

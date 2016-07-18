@@ -53,8 +53,14 @@ const Sequencer = React.createClass({
     let current = 100;
     this.lineInterval = window.setInterval(() => {
       $('.timeline').attr("style",`left: ${current}px`);
-      current += 802/((60/this.state.bpm) * 16)/100;
-      if (current > 902) {
+      if (this.props.tutorial) {
+
+        current += 800/((60/this.state.bpm) * 16)/100;
+      } else {
+
+        current +=  1.172;
+      }
+      if (current > 900) {
         current = 100;
       }
     }, 10);
@@ -103,7 +109,7 @@ const Sequencer = React.createClass({
     // });
     let timeRow = [];
     for (var i = 0; i < 16; i++) {
-      timeRow.push(<li className='time-step' data-num={i}></li>);
+      timeRow.push(<li className='beat' data-num={i}>{i+1}</li>);
     }
     let playback = <button onClick={this._handlePlay}>PLAY</button>;
     if (this.state.playing) {
@@ -119,53 +125,54 @@ const Sequencer = React.createClass({
           <input type='text' onChange={this._setBPM} value={this.state.bpm}></input>
         </label>
         <table>
-          
+
           <tr>
             <td className='instrument-name' data-seq='s-seven'>Lex Chant</td>
             <td>
-              <SeqRow setNote={this._setShortestNote} steps={this.state.steps} pad='seven' clicked={[1,5,9,13]}/>
+              <SeqRow setNote={this._setShortestNote} steps={this.state.steps} pad='seven' clicked={this.props.clicked[0]}/>
             </td>
           </tr>
           <tr>
             <td className='instrument-name' data-seq='s-six'>Biggie 2</td>
             <td>
-              <SeqRow setNote={this._setShortestNote} steps={this.state.steps} pad='six' clicked={[0,2,3,5,6]}/>
+              <SeqRow setNote={this._setShortestNote} steps={this.state.steps} pad='six' clicked={this.props.clicked[1]}/>
             </td>
           </tr>
           <tr>
             <td className='instrument-name' data-seq='s-five'>Biggie 5</td>
             <td>
-              <SeqRow setNote={this._setShortestNote} steps={this.state.steps} pad='five' clicked={[13]}/>
+              <SeqRow setNote={this._setShortestNote} steps={this.state.steps} pad='five' clicked={this.props.clicked[2]}/>
             </td>
           </tr>
           <tr>
-            <td className='instrument-name' data-seq='s-four'>Hi-Hat 1</td>
+            <td className='instrument-name' data-seq='s-four'>Biggie 1</td>
             <td>
-              <SeqRow setNote={this._setShortestNote} steps={this.state.steps} pad='four'/>
+              <SeqRow setNote={this._setShortestNote} steps={this.state.steps} pad='four' />
             </td>
           </tr>
           <tr>
-            <td className='instrument-name' data-seq='s-three'>Snare</td>
+            <td className='instrument-name' data-seq='s-three'>Hi-Hat 1</td>
             <td>
-              <SeqRow setNote={this._setShortestNote} steps={this.state.steps} pad='three' clicked={[2,6,10,14]}/>
+              <SeqRow setNote={this._setShortestNote} steps={this.state.steps} pad='three'/>
             </td>
           </tr>
           <tr>
-            <td className='instrument-name' data-seq='s-two'>Kick</td>
+            <td className='instrument-name' data-seq='s-two'>Snare</td>
             <td>
-              <SeqRow setNote={this._setShortestNote} steps={this.state.steps} pad='two'/>
+              <SeqRow setNote={this._setShortestNote} steps={this.state.steps} pad='two' clicked={this.props.clicked[3]}/>
             </td>
           </tr>
+
           <tr>
             <td className='instrument-name' data-seq='s-one'>Sub</td>
             <td>
-              <SeqRow setNote={this._setShortestNote} steps={this.state.steps} pad='one' clicked={[0,3,5,7]}/>
+              <SeqRow setNote={this._setShortestNote} steps={this.state.steps} pad='one' clicked={this.props.clicked[4]}/>
             </td>
           </tr>
           <tr>
             <td></td>
             <td>
-              <ul className='sequencer-row timer-row'>
+              <ul className='sequencer-row beat-row'>
                 {timeRow}
               </ul>
             </td>
