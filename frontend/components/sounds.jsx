@@ -72,16 +72,16 @@ const Sounds = React.createClass({
 
       $(`.pad.${id}`).append(`<p class='inst'>${this.state.sounds[id][1]}</p>`);
       return (
-        <audio id={id}>
-          <source src={this.state.sounds[id][0]} />
+        <audio key={`audio${id}`} id={id}>
+          <source key={`source${id}`} src={this.state.sounds[id][0]} />
         </audio>
       );
     });
     let seqs = Object.keys(this.state.seqSounds).map(id => {
 
       return (
-        <audio id={id}>
-          <source src={this.state.seqSounds[id]} />
+        <audio key={`audio${id}`} id={id}>
+          <source key={`source${id}`} src={this.state.seqSounds[id]} />
         </audio>
       );
     });

@@ -161,13 +161,13 @@ const ToneMatrix = React.createClass({
     let drums = [];
 
     if (this.state.drums) {
-      drums.push(<Sequencer playing={this.state.playing} clicked={[[],[],[],[],[]]}/>);
+      drums.push(<Sequencer key={'sequencer'} playing={this.state.playing} clicked={[[],[],[],[],[]]}/>);
       $('.add-drums-btn').hide();
       $('.playback-buttons').css('display','block');
     }
-    let playback = <div className='playback-btn' onClick={this._handlePlay}><h2>Play</h2></div>;
+    let playback = <div key={'play'} className='playback-btn' onClick={this._handlePlay}><h2>Play</h2></div>;
     if (this.state.playing) {
-      playback = <div className='playback-btn' onClick={this._handleStop}><h2>Stop</h2></div>;
+      playback = <div key={'stop'} className='playback-btn' onClick={this._handleStop}><h2>Stop</h2></div>;
     }
     return (
       <div>

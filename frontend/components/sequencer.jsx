@@ -102,7 +102,7 @@ const Sequencer = React.createClass({
 
     let timeRow = [];
     for (var i = 0; i < 16; i++) {
-      timeRow.push(<li className='beat' data-num={i}>{i+1}</li>);
+      timeRow.push(<li key={`${i}time`} className='beat' data-num={i}>{i+1}</li>);
     }
 
 

@@ -65,19 +65,19 @@ const SeqRow = React.createClass({
 
 
     let divStyle = {
-      width: `${this.width}`,
+      width: `${this.width}px`,
     };
 
     for (var i = 0; i < this.props.steps * ratio; i++) {
 
-        row.push(<li className='note-step' onClick={this._handleClick} data-pad={this.props.pad} style={divStyle}></li>);
+        row.push(<li key = {`note-step${i}`}className='note-step' onClick={this._handleClick} data-pad={this.props.pad} style={divStyle}></li>);
 
     }
 
     row.push(
-      <select className='note-length' onChange={this._setNote} value={this.state.note}>
-        <option value='4'>4</option>
-        <option value='8'>8</option>
+      <select key={'select-note-length'}className='note-length' onChange={this._setNote} value={this.state.note}>
+        <option key={'note-length-4'} value='4'>4</option>
+        <option key={'note-length-8'} value='8'>8</option>
       </select>
     );
 
@@ -93,7 +93,7 @@ const SeqRow = React.createClass({
       if (this.state.clicked.includes(i)) {
         row[i] = <li className='note-step clicked'
           onClick={this._handleClick} data-pad={this.props.pad}
-          style={{width: `${this.width}`}}></li>;
+          style={{width: `${this.width}px`}}></li>;
       }
     }
 
