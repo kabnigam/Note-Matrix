@@ -65,7 +65,7 @@ const ToneMatrix = React.createClass({
       this._playColumn(i % 32);
       i++;
     }, this.timeout);
-    let current = 100;
+
 
   },
 
