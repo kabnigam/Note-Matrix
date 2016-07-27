@@ -4,11 +4,12 @@ const DrumPad = require('./components/drum_pad.jsx');
 const Sequencer = require('./components/sequencer.jsx');
 const Sounds = require('./components/sounds.jsx');
 const Instructions = require('./components/instructions.jsx');
+const ToneMatrix = require('./components/tonematrix.jsx');
 
 
 const App = React.createClass({
   getInitialState: function() {
-    return {tutorial: true};
+    return {tutorial: false};
   },
   componentDidMount: function() {
     $('.tutorial').html("<span class='skip'>(Click here to skip)</span><h1>Let's make a beat.</h1><h2 class='add-beat'>Add a <span style='color:#e62e00'>sub</span> on the 1, 4, 6 and 8 and a <span style='color:#4bea0d'>snare</span> on the 3, 7, 11 and 15. <br /> Click the corresponding cells on the sequencer below then press play.</h2><h2 class='add-freestyle'>Try some freestyling.</h2><h2 class='add-freestyle'>Right when the red timeline enters a <span style='color:#F3F315'>yellow</span> square below, click the corresponding key on your keyboard.</h2><h2 class='second-freestyle'>Let's step it up. After all, what's a hip hop beat these days without some guy yelling 'What?' in the background? <br /> Same directions as before, just with another key to press!<h2 class='end-tutorial'>Good stuff! Now you're ready to produce on your own.");
@@ -187,6 +188,14 @@ const App = React.createClass({
   },
 
   render: function() {
+    if (true) {
+      return (
+        <div>
+          <ToneMatrix />
+          <Sounds />
+        </div>
+      );
+    }
     if (this.state.tutorial) {
       return (
       <div>

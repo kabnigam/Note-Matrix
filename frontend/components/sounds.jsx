@@ -88,13 +88,14 @@ const Sounds = React.createClass({
 
     return (
       <div className='sounds'>
-        <MusicBox drop={this._handleDrop}/>
+      
         <div className='pad-sounds'>
           {pads}
         </div>
         <div className='sequencer-sounds'>
           {seqs}
         </div>
+
       </div>
     );
   }

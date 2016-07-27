@@ -23,7 +23,7 @@
      width: 80px;
      height: 80px;
      /*border: 1px solid lightgray;*/
-     box-shadow: 3px -3px 5px white;
+
      display: inline-block;
      list-style: none;
      margin: 0 5px;
@@ -114,8 +114,8 @@
 }
 
 ul.sequencer-row > li.note-step {
-    background-color: black;
-    box-shadow: 0px -1px 5px white;
+      background-color: #353e42;
+
     text-align: center;
 }
 
@@ -290,5 +290,52 @@ li.beat {
 
 .skip:hover {
   cursor: pointer;
-  color: aqua;  
+  color: aqua;
+}
+
+.matrix > ul {
+  margin: 0;
+}
+
+.matrix > ul >  li {
+  height: 20px;
+  width: 20px;
+  box-shadow: none;
+  background-color: #353e42;
+  margin-right: 1px;
+}
+
+.matrix {
+  margin: 60px auto;
+  width: 470px;
+  margin-bottom: 10px;
+}
+
+.ripple {
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  transform: scale(0);
+  position: absolute;
+  opacity: 1;
+}
+.rippleEffect {
+    animation: rippleDrop .6s linear;
+}
+
+@keyframes rippleDrop {
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+.add-drums-btn {
+  margin: 20px auto;
+  width: 94px;
+
+  padding: 5px 20px;
+  border-radius: 5px;
+  background: gray;
 }

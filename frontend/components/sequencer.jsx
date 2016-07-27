@@ -53,13 +53,13 @@ const Sequencer = React.createClass({
     let current = 100;
     this.lineInterval = window.setInterval(() => {
       $('.timeline').attr("style",`left: ${current}px`);
-      if (this.props.tutorial) {
+      // if (this.props.tutorial) {
 
         current += 800/((60/this.state.bpm) * 16)/100;
-      } else {
-
-        current +=  1.172;
-      }
+      // } else {
+      //
+      //   current +=  1.172;
+      // }
       if (current > 900) {
         current = 100;
       }
@@ -88,7 +88,6 @@ const Sequencer = React.createClass({
       let ratio = (16/(this.state.sig_top/this.state.shortest_note))/(rows[i].children.length-1);
       if (j%ratio === 0 && $(rows[i].children[j/ratio]).hasClass('clicked')) {
 
-        // document.getElementById(`s-${rows[i].dataset.pad}`).pause();
         if (document.getElementById(`s-${rows[i].dataset.pad}`).currentTime) {
           document.getElementById(`s-${rows[i].dataset.pad}`).currentTime = 0;
         }
@@ -107,23 +106,26 @@ const Sequencer = React.createClass({
     //     row.push();
     //   }
     // });
+
+
     let timeRow = [];
     for (var i = 0; i < 16; i++) {
       timeRow.push(<li className='beat' data-num={i}>{i+1}</li>);
     }
-    let playback = <button onClick={this._handlePlay}>PLAY</button>;
-    if (this.state.playing) {
-
-      this._startPlaying();
-      playback = <button onClick={this._handleStop}>STOP</button>;
-    }
+    // let playback = <button onClick={this._handlePlay}>PLAY</button>;
+    // if (this.state.playing || this.props.playing) {
+    //
+    //   this._startPlaying();
+    //   playback = <button onClick={this._handleStop}>STOP</button>;
+    // }
+    // <label>
+    //   BPM:
+    //   <input type='text' onChange={this._setBPM} value={this.state.bpm}></input>
+    // </label>
 
     return (
       <div className='sequencer'>
-        <label>
-          BPM:
-          <input type='text' onChange={this._setBPM} value={this.state.bpm}></input>
-        </label>
+
         <table>
 
           <tr>
@@ -183,7 +185,7 @@ const Sequencer = React.createClass({
 
         <div className='playback-buttons'>
 
-          {playback}
+
           <button onClick={this._handleReset}>RESET</button>
         </div>
 
