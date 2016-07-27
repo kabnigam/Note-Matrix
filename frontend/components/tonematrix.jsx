@@ -171,7 +171,9 @@ const ToneMatrix = React.createClass({
     }
     return (
       <div>
-
+        <div className='dirs'>
+          <h4>Click any square to start the matrix, which loops from left to right.</h4>
+        </div>
         <div className='matrix'>
           <div className='matrix-sounds'>
             <audio id='tm1'>

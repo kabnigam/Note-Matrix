@@ -8,10 +8,10 @@ const Sounds = React.createClass({
       sounds: {},
       seqSounds: {
         's-one': "https://s3-us-west-1.amazonaws.com/soundsamples/808_sub.wav",
-        's-two': "https://s3-us-west-1.amazonaws.com/soundsamples/Squad+Snare+5.wav",
-        's-three':'https://s3-us-west-1.amazonaws.com/soundsamples/Squad+HiHat+3.wav',
-        's-four': 'https://s3-us-west-1.amazonaws.com/soundsamples/Squad+HiHat+4.wav',
-        's-five': 'https://s3-us-west-1.amazonaws.com/soundsamples/biggie5.wav',
+        's-two': "https://s3-us-west-1.amazonaws.com/soundsamples/Squad+Kick+3.wav",
+        's-three':'https://s3-us-west-1.amazonaws.com/soundsamples/Squad+Snare+5.wav',
+        's-four': 'https://s3-us-west-1.amazonaws.com/soundsamples/Squad+HiHat+3.wav',
+        's-five': 'https://s3-us-west-1.amazonaws.com/soundsamples/Squad+HiHat+4.wav',
         's-six':'https://s3-us-west-1.amazonaws.com/soundsamples/WOO.wav',
         's-seven':'https://s3-us-west-1.amazonaws.com/soundsamples/LEX+Chant.wav' }
     };

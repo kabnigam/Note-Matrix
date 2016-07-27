@@ -126,25 +126,25 @@ const Sequencer = React.createClass({
             </td>
           </tr>
           <tr>
-            <td className='instrument-name' data-seq='s-five'>Biggie 5</td>
+            <td className='instrument-name' data-seq='s-five'>Hi-Hat O</td>
             <td>
               <SeqRow setNote={this._setShortestNote} steps={this.state.steps} pad='five' clicked={this.props.clicked[2]}/>
             </td>
           </tr>
           <tr>
-            <td className='instrument-name' data-seq='s-four'>Hi-Hat O</td>
+            <td className='instrument-name' data-seq='s-four'>Hi-Hat C</td>
             <td>
               <SeqRow setNote={this._setShortestNote} steps={this.state.steps} pad='four' />
             </td>
           </tr>
           <tr>
-            <td className='instrument-name' data-seq='s-three'>Hi-Hat C</td>
+            <td className='instrument-name' data-seq='s-three'>Snare</td>
             <td>
               <SeqRow setNote={this._setShortestNote} steps={this.state.steps} pad='three'/>
             </td>
           </tr>
           <tr>
-            <td className='instrument-name' data-seq='s-two'>Snare</td>
+            <td className='instrument-name' data-seq='s-two'>Kick</td>
             <td>
               <SeqRow setNote={this._setShortestNote} steps={this.state.steps} pad='two' clicked={this.props.clicked[3]}/>
             </td>

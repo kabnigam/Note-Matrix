@@ -33,7 +33,7 @@
 
  li:hover {
    cursor: pointer;
-   
+
  }
  .clicked {
    background: radial-gradient(aqua, gray);
@@ -361,4 +361,11 @@ padding: 5px 20px;
 .playback-btn:hover {
   cursor: pointer;
   background-color: white;
+}
+
+.dirs {
+    position: absolute;
+    width: 200px;
+    color: white;
+    margin-left: 40px;
 }
