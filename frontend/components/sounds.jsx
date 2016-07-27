@@ -70,7 +70,7 @@ const Sounds = React.createClass({
     return (
       <div className='sounds'>
 
-        
+
         <div className='sequencer-sounds'>
           {seqs}
         </div>

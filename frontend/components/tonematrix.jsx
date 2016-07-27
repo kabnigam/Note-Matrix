@@ -159,16 +159,36 @@ const ToneMatrix = React.createClass({
       this._startPlaying();
     }
     let drums = [];
-
+    let seqs = [];
+    let seqSounds = {};
     if (this.state.drums) {
       drums.push(<Sequencer key={'sequencer'} playing={this.state.playing} clicked={[[],[],[],[],[]]}/>);
       $('.add-drums-btn').hide();
       $('.playback-buttons').css('display','block');
-    }
+      seqSounds = {
+        's-one': "https://s3-us-west-1.amazonaws.com/soundsamples/808_sub.wav",
+        's-two': "https://s3-us-west-1.amazonaws.com/soundsamples/Squad+Kick+3.wav",
+        's-three':'https://s3-us-west-1.amazonaws.com/soundsamples/Squad+Snare+5.wav',
+        's-four': 'https://s3-us-west-1.amazonaws.com/soundsamples/Squad+HiHat+3.wav',
+        's-five': 'https://s3-us-west-1.amazonaws.com/soundsamples/Squad+HiHat+4.wav',
+        's-six':'https://s3-us-west-1.amazonaws.com/soundsamples/WOO.wav',
+        's-seven':'https://s3-us-west-1.amazonaws.com/soundsamples/LEX+Chant.wav' };
+      }
+      seqs = Object.keys(seqSounds).map(id => {
+
+        return (
+          <audio key={`audio${id}`} id={id}>
+            <source key={`source${id}`} src={seqSounds[id]} />
+          </audio>
+        );
+      });
+
     let playback = <div key={'play'} className='playback-btn' onClick={this._handlePlay}><h2>Play</h2></div>;
     if (this.state.playing) {
       playback = <div key={'stop'} className='playback-btn' onClick={this._handleStop}><h2>Stop</h2></div>;
     }
+
+
     return (
       <div>
         <div className='dirs'>
@@ -518,6 +538,7 @@ const ToneMatrix = React.createClass({
           </div>
         </div>
         {drums}
+        {seqs}
         <div className='playback-buttons'>
 
           {playback}

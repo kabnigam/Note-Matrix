@@ -14,7 +14,7 @@ const App = React.createClass({
 
   componentDidMount: function() {
     $(window).load(function() {
-      
+
       $("#content-stuff").css('display', 'block');
       $("#loading").css('display', 'none');
     });
@@ -135,7 +135,7 @@ const App = React.createClass({
           <div id='content-stuff'>
 
             <ToneMatrix />
-            <Sounds />
+        
           </div>
         </div>
       );
