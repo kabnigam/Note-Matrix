@@ -312,7 +312,7 @@ li.beat {
 }
 
 .matrix {
-  margin: 60px auto;
+  margin: 10px auto;
   width: 470px;
   margin-bottom: 10px;
 }
@@ -364,10 +364,10 @@ padding: 5px 20px;
 }
 
 .dirs {
-    position: absolute;
-    width: 200px;
-    color: white;
-    margin-left: 65px;
+  width: 375px;
+  color: white;
+  margin: 0 auto;
+  padding-left: 30px;
 }
 
 #loading {
