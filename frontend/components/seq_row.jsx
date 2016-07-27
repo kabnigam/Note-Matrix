@@ -78,8 +78,6 @@ const SeqRow = React.createClass({
       <select className='note-length' onChange={this._setNote} value={this.state.note}>
         <option value='4'>4</option>
         <option value='8'>8</option>
-        <option value='16'>16</option>
-        <option value='32'>32</option>
       </select>
     );
 

@@ -10,9 +10,9 @@ const Sounds = React.createClass({
         's-one': "https://s3-us-west-1.amazonaws.com/soundsamples/808_sub.wav",
         's-two': "https://s3-us-west-1.amazonaws.com/soundsamples/Squad+Snare+5.wav",
         's-three':'https://s3-us-west-1.amazonaws.com/soundsamples/Squad+HiHat+3.wav',
-        's-four': 'https://s3-us-west-1.amazonaws.com/soundsamples/biggie1.wav',
+        's-four': 'https://s3-us-west-1.amazonaws.com/soundsamples/Squad+HiHat+4.wav',
         's-five': 'https://s3-us-west-1.amazonaws.com/soundsamples/biggie5.wav',
-        's-six':'https://s3-us-west-1.amazonaws.com/soundsamples/biggie2.wav',
+        's-six':'https://s3-us-west-1.amazonaws.com/soundsamples/WOO.wav',
         's-seven':'https://s3-us-west-1.amazonaws.com/soundsamples/LEX+Chant.wav' }
     };
   },
@@ -88,7 +88,7 @@ const Sounds = React.createClass({
 
     return (
       <div className='sounds'>
-      
+
         <div className='pad-sounds'>
           {pads}
         </div>

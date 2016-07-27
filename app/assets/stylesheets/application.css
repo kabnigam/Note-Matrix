@@ -17,6 +17,7 @@
    background-color: black;
    font-family: 'PT Sans Narrow', sans-serif;
    font-weight: 400;
+   min-width: 1100px;
  }
 
  li {
@@ -30,6 +31,10 @@
      border-radius: 5px;
  }
 
+ li:hover {
+   cursor: pointer;
+   
+ }
  .clicked {
    background: radial-gradient(aqua, gray);
  }
@@ -110,7 +115,8 @@
 
 .playback-buttons {
     margin: 0 auto;
-    width: 18%;
+    width: 38px;
+    display: none;
 }
 
 ul.sequencer-row > li.note-step {
@@ -332,10 +338,27 @@ li.beat {
 }
 
 .add-drums-btn {
-  margin: 20px auto;
-  width: 94px;
-
+  margin: 20px 184px;
+    width: 95px;
   padding: 5px 20px;
   border-radius: 5px;
   background: gray;
+}
+
+.add-drums-btn:hover {
+  cursor: pointer;
+  background-color: white;
+}
+
+.playback-btn {
+  margin: 20px auto;
+width: 40px;
+padding: 5px 20px;
+  border-radius: 5px;
+  background: gray;
+}
+
+.playback-btn:hover {
+  cursor: pointer;
+  background-color: white;
 }

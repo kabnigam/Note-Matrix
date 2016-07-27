@@ -14,7 +14,6 @@ const Sequencer = React.createClass({
     this.setState({playing: false});
     window.clearInterval(this.interval);
     window.clearInterval(this.lineInterval);
-    $('.timeline').attr("style",`left: 100px`);
     $('li.time-step').removeClass('on');
   },
   _setShortestNote: function(n) {
@@ -26,7 +25,6 @@ const Sequencer = React.createClass({
     }
   },
   _startPlaying: function() {
-    // let timeout = (NoteConstants[this.state.note]/this.state.bpm) * 1000;
     let timeout = ((60/this.state.bpm) * 1000) * (this.state.sig_top/this.state.shortest_note);
     let i = 0;
     let j = 0;
@@ -52,7 +50,7 @@ const Sequencer = React.createClass({
     }, timeout);
     let current = 100;
     this.lineInterval = window.setInterval(() => {
-      $('.timeline').attr("style",`left: ${current}px`);
+      // $('.timeline').attr("style",`left: ${current}px`);
       // if (this.props.tutorial) {
 
         current += 800/((60/this.state.bpm) * 16)/100;
@@ -101,27 +99,14 @@ const Sequencer = React.createClass({
 
   render: function() {
     this.rows = [[],[],[],[],[],[],[],[],[]];
-    // this.rows.forEach(row => {
-    //   for (var i = 0; i < this.state.steps; i++) {
-    //     row.push();
-    //   }
-    // });
-
 
     let timeRow = [];
     for (var i = 0; i < 16; i++) {
       timeRow.push(<li className='beat' data-num={i}>{i+1}</li>);
     }
-    // let playback = <button onClick={this._handlePlay}>PLAY</button>;
-    // if (this.state.playing || this.props.playing) {
-    //
-    //   this._startPlaying();
-    //   playback = <button onClick={this._handleStop}>STOP</button>;
-    // }
-    // <label>
-    //   BPM:
-    //   <input type='text' onChange={this._setBPM} value={this.state.bpm}></input>
-    // </label>
+
+
+
 
     return (
       <div className='sequencer'>
@@ -135,7 +120,7 @@ const Sequencer = React.createClass({
             </td>
           </tr>
           <tr>
-            <td className='instrument-name' data-seq='s-six'>Biggie 2</td>
+            <td className='instrument-name' data-seq='s-six'>Woo!</td>
             <td>
               <SeqRow setNote={this._setShortestNote} steps={this.state.steps} pad='six' clicked={this.props.clicked[1]}/>
             </td>
@@ -147,13 +132,13 @@ const Sequencer = React.createClass({
             </td>
           </tr>
           <tr>
-            <td className='instrument-name' data-seq='s-four'>Biggie 1</td>
+            <td className='instrument-name' data-seq='s-four'>Hi-Hat O</td>
             <td>
               <SeqRow setNote={this._setShortestNote} steps={this.state.steps} pad='four' />
             </td>
           </tr>
           <tr>
-            <td className='instrument-name' data-seq='s-three'>Hi-Hat 1</td>
+            <td className='instrument-name' data-seq='s-three'>Hi-Hat C</td>
             <td>
               <SeqRow setNote={this._setShortestNote} steps={this.state.steps} pad='three'/>
             </td>
@@ -180,14 +165,10 @@ const Sequencer = React.createClass({
             </td>
           </tr>
 
-          <div className="timeline" style={{left: '100'}} />
+
         </table>
 
-        <div className='playback-buttons'>
 
-
-          <button onClick={this._handleReset}>RESET</button>
-        </div>
 
       </div>
     );

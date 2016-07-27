@@ -58,13 +58,24 @@ const ToneMatrix = React.createClass({
 
 
   _startPlaying: function() {
-    let timeout = ((60/140) * 1000) * 0.5;
+    this.timeout = ((60/140) * 1000) * 0.5;
     let i = 0;
 
     this.interval = window.setInterval(() => {
       this._playColumn(i % 32);
       i++;
-    },timeout);
+    }, this.timeout);
+    let current = 100;
+
+  },
+
+  _handleStop: function() {
+    this.setState({playing: false});
+    window.clearInterval(this.interval);
+  },
+
+  _handlePlay: function() {
+    this.setState({playing: true});
   },
 
   _showDrums: function() {
@@ -76,7 +87,7 @@ const ToneMatrix = React.createClass({
   _playColumn: function(i) {
     let pads = document.getElementsByClassName(`mcol${i%16 + 1}`);
     let prev_pads = '';
-    if (i === 0) {
+    if (i%16 === 0) {
       prev_pads = document.getElementsByClassName(`mcol${16}`);
     } else {
       prev_pads = document.getElementsByClassName(`mcol${i%16}`);
@@ -113,14 +124,30 @@ const ToneMatrix = React.createClass({
 
       let rows = $('ul.sequencer-row');
       for (var j = 0;j < rows.length;j++) {
-        // let ratio = (16/(this.state.sig_top/this.state.shortest_note))/(rows[i].children.length-1);
-        let ratio = 2;
+
+        let ratio = 32/(rows[j].children.length - 1);
+        if (i%ratio === 0) {
+
+          if (i%(rows[j].children.length-1) === 0) {
+            if (i === 0) {
+
+              $(rows[j].children[rows[j].children.length-2]).css({'box-shadow': 'none', 'background': ''});
+            } else {
+
+              $(rows[j].children[(rows[j].children.length-1)/2-1]).css({'box-shadow': 'none', 'background': ''});
+            }
+          } else {
+
+            $(rows[j].children[(i-ratio)/ratio]).css({'box-shadow': 'none', 'background': ''});
+          }
+        }
         if (i%ratio === 0 && $(rows[j].children[i/ratio]).hasClass('clicked')) {
 
           if (document.getElementById(`s-${rows[j].dataset.pad}`).currentTime) {
             document.getElementById(`s-${rows[j].dataset.pad}`).currentTime = 0;
           }
           document.getElementById(`s-${rows[j].dataset.pad}`).play();
+          $(rows[j].children[i/ratio]).css({'box-shadow': '2px 0px 20px white', 'background': 'lime'});
         }
       }
     }
@@ -132,11 +159,15 @@ const ToneMatrix = React.createClass({
       this._startPlaying();
     }
     let drums = [];
-    if (this.state.drums) {
 
+    if (this.state.drums) {
       drums.push(<Sequencer playing={this.state.playing} clicked={[[],[],[],[],[]]}/>);
       $('.add-drums-btn').hide();
-
+      $('.playback-buttons').css('display','block');
+    }
+    let playback = <div className='playback-btn' onClick={this._handlePlay}><h2>Play</h2></div>;
+    if (this.state.playing) {
+      playback = <div className='playback-btn' onClick={this._handleStop}><h2>Stop</h2></div>;
     }
     return (
       <div>
@@ -485,6 +516,11 @@ const ToneMatrix = React.createClass({
           </div>
         </div>
         {drums}
+        <div className='playback-buttons'>
+
+          {playback}
+
+        </div>
       </div>
     );
 
