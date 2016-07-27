@@ -168,13 +168,13 @@ const ToneMatrix = React.createClass({
 
       }
     let seqSounds = {
-      's-one': "https://s3-us-west-1.amazonaws.com/soundsamples/808_sub.wav",
+      's-one': "https://s3-us-west-1.amazonaws.com/soundsamples/808_sub.mp3",
       's-two': "https://s3-us-west-1.amazonaws.com/soundsamples/Squad+Kick+3.wav",
-      's-three':'https://s3-us-west-1.amazonaws.com/soundsamples/Squad+Snare+5.wav',
-      's-four': 'https://s3-us-west-1.amazonaws.com/soundsamples/Squad+HiHat+3.wav',
-      's-five': 'https://s3-us-west-1.amazonaws.com/soundsamples/Squad+HiHat+4.wav',
-      's-six':'https://s3-us-west-1.amazonaws.com/soundsamples/WOO.wav',
-      's-seven':'https://s3-us-west-1.amazonaws.com/soundsamples/LEX+Chant.wav' };
+      's-three':'https://s3-us-west-1.amazonaws.com/soundsamples/Squad+Snare+5.mp3',
+      's-four': 'https://s3-us-west-1.amazonaws.com/soundsamples/Squad+HiHat+3.mp3',
+      's-five': 'https://s3-us-west-1.amazonaws.com/soundsamples/Squad+HiHat+4.mp3',
+      's-six':'https://s3-us-west-1.amazonaws.com/soundsamples/WOO.mp3',
+      's-seven':'https://s3-us-west-1.amazonaws.com/soundsamples/LEX+Chant.mp3' };
     let seqs = Object.keys(seqSounds).map(id => {
 
       return (
