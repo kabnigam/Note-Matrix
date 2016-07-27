@@ -169,8 +169,8 @@ const ToneMatrix = React.createClass({
       }
     let seqSounds = {
       's-one': "https://s3-us-west-1.amazonaws.com/soundsamples/808_sub.mp3",
-      's-two': "https://s3-us-west-1.amazonaws.com/soundsamples/Squad+Kick+3.wav",
-      's-three':'https://s3-us-west-1.amazonaws.com/soundsamples/Squad+Snare+5.mp3',
+      's-two': "https://s3-us-west-1.amazonaws.com/soundsamples/Squad+Kick+3.mp3",
+      's-three':'https://s3-us-west-1.amazonaws.com/soundsamples/Squad+Snare+5.wav',
       's-four': 'https://s3-us-west-1.amazonaws.com/soundsamples/Squad+HiHat+3.mp3',
       's-five': 'https://s3-us-west-1.amazonaws.com/soundsamples/Squad+HiHat+4.mp3',
       's-six':'https://s3-us-west-1.amazonaws.com/soundsamples/WOO.mp3',
