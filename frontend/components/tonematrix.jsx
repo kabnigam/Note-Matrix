@@ -159,29 +159,30 @@ const ToneMatrix = React.createClass({
       this._startPlaying();
     }
     let drums = [];
-    let seqs = [];
-    let seqSounds = {};
+
+
     if (this.state.drums) {
       drums.push(<Sequencer key={'sequencer'} playing={this.state.playing} clicked={[[],[],[],[],[]]}/>);
       $('.add-drums-btn').hide();
       $('.playback-buttons').css('display','block');
-      seqSounds = {
-        's-one': "https://s3-us-west-1.amazonaws.com/soundsamples/808_sub.wav",
-        's-two': "https://s3-us-west-1.amazonaws.com/soundsamples/Squad+Kick+3.wav",
-        's-three':'https://s3-us-west-1.amazonaws.com/soundsamples/Squad+Snare+5.wav',
-        's-four': 'https://s3-us-west-1.amazonaws.com/soundsamples/Squad+HiHat+3.wav',
-        's-five': 'https://s3-us-west-1.amazonaws.com/soundsamples/Squad+HiHat+4.wav',
-        's-six':'https://s3-us-west-1.amazonaws.com/soundsamples/WOO.wav',
-        's-seven':'https://s3-us-west-1.amazonaws.com/soundsamples/LEX+Chant.wav' };
-      }
-      seqs = Object.keys(seqSounds).map(id => {
 
-        return (
-          <audio key={`audio${id}`} id={id}>
-            <source key={`source${id}`} src={seqSounds[id]} />
-          </audio>
-        );
-      });
+      }
+    let seqSounds = {
+      's-one': "https://s3-us-west-1.amazonaws.com/soundsamples/808_sub.wav",
+      's-two': "https://s3-us-west-1.amazonaws.com/soundsamples/Squad+Kick+3.wav",
+      's-three':'https://s3-us-west-1.amazonaws.com/soundsamples/Squad+Snare+5.wav',
+      's-four': 'https://s3-us-west-1.amazonaws.com/soundsamples/Squad+HiHat+3.wav',
+      's-five': 'https://s3-us-west-1.amazonaws.com/soundsamples/Squad+HiHat+4.wav',
+      's-six':'https://s3-us-west-1.amazonaws.com/soundsamples/WOO.wav',
+      's-seven':'https://s3-us-west-1.amazonaws.com/soundsamples/LEX+Chant.wav' };
+    let seqs = Object.keys(seqSounds).map(id => {
+
+      return (
+        <audio key={`audio${id}`} id={id}>
+          <source key={`source${id}`} src={seqSounds[id]} />
+        </audio>
+      );
+    });
 
     let playback = <div key={'play'} className='playback-btn' onClick={this._handlePlay}><h2>Play</h2></div>;
     if (this.state.playing) {
@@ -197,52 +198,52 @@ const ToneMatrix = React.createClass({
         <div className='matrix'>
           <div className='matrix-sounds'>
             <audio id='tm1'>
-              <source src='https://s3-us-west-1.amazonaws.com/soundsamples/Hapi_vs_Xylophone_011.wav' />
+              <source src='https://s3-us-west-1.amazonaws.com/soundsamples/Hapi_vs_Xylophone_011.mp3' />
             </audio>
             <audio id='tm2'>
-              <source src='https://s3-us-west-1.amazonaws.com/soundsamples/Hapi_vs_Xylophone_012.wav' />
+              <source src='https://s3-us-west-1.amazonaws.com/soundsamples/Hapi_vs_Xylophone_012.mp3' />
             </audio>
             <audio id='tm3'>
-              <source src='https://s3-us-west-1.amazonaws.com/soundsamples/Hapi_vs_Xylophone_013.wav' />
+              <source src='https://s3-us-west-1.amazonaws.com/soundsamples/Hapi_vs_Xylophone_013.mp3' />
             </audio>
             <audio id='tm4'>
-              <source src='https://s3-us-west-1.amazonaws.com/soundsamples/Hapi_vs_Xylophone_014.wav' />
+              <source src='https://s3-us-west-1.amazonaws.com/soundsamples/Hapi_vs_Xylophone_014.mp3' />
             </audio>
             <audio id='tm5'>
-              <source src='https://s3-us-west-1.amazonaws.com/soundsamples/Hapi_vs_Xylophone_015.wav' />
+              <source src='https://s3-us-west-1.amazonaws.com/soundsamples/Hapi_vs_Xylophone_015.mp3' />
             </audio>
             <audio id='tm6'>
-              <source src='https://s3-us-west-1.amazonaws.com/soundsamples/Hapi_vs_Xylophone_016.wav' />
+              <source src='https://s3-us-west-1.amazonaws.com/soundsamples/Hapi_vs_Xylophone_016.mp3' />
             </audio>
             <audio id='tm7'>
-              <source src='https://s3-us-west-1.amazonaws.com/soundsamples/Hapi_vs_Xylophone_017.wav' />
+              <source src='https://s3-us-west-1.amazonaws.com/soundsamples/Hapi_vs_Xylophone_017.mp3' />
             </audio>
             <audio id='tm8'>
-              <source src='https://s3-us-west-1.amazonaws.com/soundsamples/Hapi_vs_Xylophone_018.wav' />
+              <source src='https://s3-us-west-1.amazonaws.com/soundsamples/Hapi_vs_Xylophone_018.mp3' />
             </audio>
             <audio id='tm9'>
-              <source src='https://s3-us-west-1.amazonaws.com/soundsamples/Hapi_vs_Xylophone_019.wav' />
+              <source src='https://s3-us-west-1.amazonaws.com/soundsamples/Hapi_vs_Xylophone_019.mp3' />
             </audio>
             <audio id='tm10'>
-              <source src='https://s3-us-west-1.amazonaws.com/soundsamples/Hapi_vs_Xylophone_020.wav' />
+              <source src='https://s3-us-west-1.amazonaws.com/soundsamples/Hapi_vs_Xylophone_020.mp3' />
             </audio>
             <audio id='tm11'>
-              <source src='https://s3-us-west-1.amazonaws.com/soundsamples/Hapi_vs_Xylophone_021.wav' />
+              <source src='https://s3-us-west-1.amazonaws.com/soundsamples/Hapi_vs_Xylophone_021.mp3' />
             </audio>
             <audio id='tm12'>
-              <source src='https://s3-us-west-1.amazonaws.com/soundsamples/Hapi_vs_Xylophone_022.wav' />
+              <source src='https://s3-us-west-1.amazonaws.com/soundsamples/Hapi_vs_Xylophone_022.mp3' />
             </audio>
             <audio id='tm13'>
-              <source src='https://s3-us-west-1.amazonaws.com/soundsamples/Hapi_vs_Xylophone_023.wav' />
+              <source src='https://s3-us-west-1.amazonaws.com/soundsamples/Hapi_vs_Xylophone_023.mp3' />
             </audio>
             <audio id='tm14'>
-              <source src='https://s3-us-west-1.amazonaws.com/soundsamples/Hapi_vs_Xylophone_024.wav' />
+              <source src='https://s3-us-west-1.amazonaws.com/soundsamples/Hapi_vs_Xylophone_024.mp3' />
             </audio>
             <audio id='tm15'>
-              <source src='https://s3-us-west-1.amazonaws.com/soundsamples/Hapi_vs_Xylophone_025.wav' />
+              <source src='https://s3-us-west-1.amazonaws.com/soundsamples/Hapi_vs_Xylophone_025.mp3' />
             </audio>
             <audio id='tm16'>
-              <source src='https://s3-us-west-1.amazonaws.com/soundsamples/Hapi_vs_Xylophone_026.wav' />
+              <source src='https://s3-us-west-1.amazonaws.com/soundsamples/Hapi_vs_Xylophone_026.mp3' />
             </audio>
           </div>
           <ul>
