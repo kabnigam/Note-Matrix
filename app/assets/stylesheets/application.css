@@ -369,3 +369,24 @@ padding: 5px 20px;
     color: white;
     margin-left: 65px;
 }
+
+#loading {
+    background: url('http://res.cloudinary.com/dzpkgj9f0/image/upload/v1469649300/ripple_1_pj7g9j.gif');
+    height: 195px;
+    width: 199px;
+    position: absolute;
+    top: 35%;
+    left: 39%;
+
+}
+
+#loading > h2 {
+  position: absolute;
+top: 44%;
+left: 28%;
+}
+
+#content-stuff {
+  display: none;
+
+}

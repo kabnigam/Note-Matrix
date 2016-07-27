@@ -16,17 +16,6 @@ const Sounds = React.createClass({
         's-seven':'https://s3-us-west-1.amazonaws.com/soundsamples/LEX+Chant.wav' }
     };
   },
-  componentDidMount: function() {
-
-    $('.current-kit').html('Biggie 140 BPM');
-    let sounds = {
-      'p0': ['https://s3-us-west-1.amazonaws.com/soundsamples/biggie1.wav', 'Biggie 1'],
-      'p1': ['https://s3-us-west-1.amazonaws.com/soundsamples/biggie2.wav', 'Biggie 2'],
-      'p2': ['https://s3-us-west-1.amazonaws.com/soundsamples/biggie4.wav', 'Biggie 4'],
-      'p3': ['https://s3-us-west-1.amazonaws.com/soundsamples/biggie5.wav', 'Biggie 5'],
-    };
-    this.setState({sounds: sounds});
-  },
 
   _handleDrop: function(e, ui) {
 
@@ -68,15 +57,7 @@ const Sounds = React.createClass({
   render: function() {
 
     let that = this;
-    let pads = Object.keys(this.state.sounds).map(id => {
 
-      $(`.pad.${id}`).append(`<p class='inst'>${this.state.sounds[id][1]}</p>`);
-      return (
-        <audio key={`audio${id}`} id={id}>
-          <source key={`source${id}`} src={this.state.sounds[id][0]} />
-        </audio>
-      );
-    });
     let seqs = Object.keys(this.state.seqSounds).map(id => {
 
       return (
@@ -89,9 +70,7 @@ const Sounds = React.createClass({
     return (
       <div className='sounds'>
 
-        <div className='pad-sounds'>
-          {pads}
-        </div>
+        
         <div className='sequencer-sounds'>
           {seqs}
         </div>

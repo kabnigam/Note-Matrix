@@ -7,15 +7,8 @@ const Sequencer = React.createClass({
     return {steps: 16, sig_top: 4, sig_bottom: 4, playing: false, bpm: 140, shortest_note: 4};
   },
 
-  _handlePlay: function() {
-    this.setState({playing: true});
-  },
-  _handleStop: function() {
-    this.setState({playing: false});
-    window.clearInterval(this.interval);
-    window.clearInterval(this.lineInterval);
-    $('li.time-step').removeClass('on');
-  },
+
+  
   _setShortestNote: function(n) {
     this.setState({shortest_note: n});
     if (this.state.playing) {
@@ -24,45 +17,7 @@ const Sequencer = React.createClass({
       this._handlePlay();
     }
   },
-  _startPlaying: function() {
-    let timeout = ((60/this.state.bpm) * 1000) * (this.state.sig_top/this.state.shortest_note);
-    let i = 0;
-    let j = 0;
-    $(`[data-num=${j}]`).addClass('on');
-    this._playColumn(i);
-    this.interval = window.setInterval( () => {
-      if (j%1 === 0) {
-        $(`[data-num=${j}]`).removeClass('on');
-      }
-      i++;
-      j = j + (1 * (this.state.sig_top/this.state.shortest_note));
-      if (j%1 === 0) {
-        $(`[data-num=${j}]`).addClass('on');
-      }
 
-      this._playColumn(i);
-      if (i === 16/(this.state.sig_top/this.state.shortest_note) ) {
-        i = 0;
-        j = 0;
-        $(`[data-num=${j}]`).addClass('on');
-        this._playColumn(i);
-      }
-    }, timeout);
-    let current = 100;
-    this.lineInterval = window.setInterval(() => {
-      // $('.timeline').attr("style",`left: ${current}px`);
-      // if (this.props.tutorial) {
-
-        current += 800/((60/this.state.bpm) * 16)/100;
-      // } else {
-      //
-      //   current +=  1.172;
-      // }
-      if (current > 900) {
-        current = 100;
-      }
-    }, 10);
-  },
 
   _handleReset: function() {
     let clicked = $('.clicked').slice();
@@ -80,22 +35,7 @@ const Sequencer = React.createClass({
 
   },
 
-  _playColumn: function(j) {
-    let rows = $('ul.sequencer-row');
-    for (var i = 0; i < rows.length; i++) {
-      let ratio = (16/(this.state.sig_top/this.state.shortest_note))/(rows[i].children.length-1);
-      if (j%ratio === 0 && $(rows[i].children[j/ratio]).hasClass('clicked')) {
 
-        if (document.getElementById(`s-${rows[i].dataset.pad}`).currentTime) {
-          document.getElementById(`s-${rows[i].dataset.pad}`).currentTime = 0;
-        }
-        document.getElementById(`s-${rows[i].dataset.pad}`).play();
-        if (document.getElementById(`s-${rows[i].dataset.pad}`).children[0].attributes[0].value === "https://s3-us-west-1.amazonaws.com/soundsamples/808_sub.wav") {
-          $('.pad-layout').effect("shake", {times: 30, distance: 1});
-        }
-      }
-    }
-  },
 
   render: function() {
     this.rows = [[],[],[],[],[],[],[],[],[]];
