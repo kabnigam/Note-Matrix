@@ -23,7 +23,7 @@ const App = React.createClass({
   _showSequencer: function() {
     // $('.tutorial').css("min-height", "353px");
     $('.tutorial').animate( { height:"353px" }, { queue:false, duration:500,
-      complete: function() {
+      compvare: function() {
         $('.add-beat').fadeIn('slow', function() {
           $("td:contains('Snare')").attr("style", "color: #4bea0d");
           $("td:contains('Sub')").attr("style", "color: #e62e00");
@@ -37,7 +37,7 @@ const App = React.createClass({
 
   _showPad: function() {
     this.t = (16/(140/60)) * 1000;
-    let that = this;
+    var that = this;
     window.setTimeout(function() {
       $("button").eq(0).off('click');
       $('.tutorial').animate( { width:"680px" }, { queue:false, duration:500});
@@ -50,11 +50,11 @@ const App = React.createClass({
   },
 
   _startFreestyle: function() {
-    let secondRound = false;
-    let first = true;
-    let that = this;
-    let interval = 50;
-    let re = /\d+/i;
+    var secondRound = false;
+    var first = true;
+    var that = this;
+    var interval = 50;
+    var re = /\d+/i;
     $("li.note-step[data-pad='six']").eq(0).css({"box-shadow": "2px 2px 30px #F3F315", "position": 'relative', 'top': '-5px'});
     $("li.note-step[data-pad='six']").eq(0).html('w');
     $("li.note-step[data-pad='six']").eq(3).css({"box-shadow": "2px 2px 30px #F3F315", "position": 'relative', 'top': '-5px'});
@@ -70,8 +70,8 @@ const App = React.createClass({
     $("button").eq(0).on('click', function() {
 
       $("button").off('click');
-      let int = window.setInterval(function() {
-        let time = parseInt($('.timeline').attr('style').match(re));
+      var int = window.setInterval(function() {
+        var time = parseInt($('.timeline').attr('style').match(re));
 
         if (secondRound && time > 895 && this.state.tutorial) {
           if (first) {
@@ -135,7 +135,7 @@ const App = React.createClass({
           <div id='content-stuff'>
 
             <ToneMatrix />
-        
+
           </div>
         </div>
       );

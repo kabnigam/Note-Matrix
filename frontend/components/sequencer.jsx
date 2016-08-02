@@ -20,7 +20,7 @@ const Sequencer = React.createClass({
 
 
   _handleReset: function() {
-    let clicked = $('.clicked').slice();
+    var clicked = $('.clicked').slice();
     for (var i = 0; i < clicked.length; i++) {
       $('.clicked').eq(0).removeClass('clicked');
     }
@@ -40,7 +40,7 @@ const Sequencer = React.createClass({
   render: function() {
     this.rows = [[],[],[],[],[],[],[],[],[]];
 
-    let timeRow = [];
+    var timeRow = [];
     for (var i = 0; i < 16; i++) {
       timeRow.push(<li key={`${i}time`} className='beat' data-num={i}>{i+1}</li>);
     }

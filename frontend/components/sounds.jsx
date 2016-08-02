@@ -22,9 +22,9 @@ const Sounds = React.createClass({
     if (ui.draggable.context.dataset.kit && e.target.attributes[0].value === "current-kit ui-droppable") {
       $('p.inst').remove();
       this.setState({sounds: {}});
-      let urls = ui.draggable.context.dataset.kit.split(',');
-      let sounds = ui.draggable.context.dataset.sounds.split(',');
-      let temp = {};
+      var urls = ui.draggable.context.dataset.kit.split(',');
+      var sounds = ui.draggable.context.dataset.sounds.split(',');
+      var temp = {};
       for (var i = 0; i < urls.length; i++) {
 
         temp[`p${i}`] = [urls[i], sounds[i]];
@@ -34,7 +34,7 @@ const Sounds = React.createClass({
       $(e.target).html(ui.draggable.context.innerHTML);
     }
     else if (ui.draggable.context.dataset.url && e.target.attributes[0].value === "instrument-name ui-droppable") {
-      let temp = this.state.seqSounds;
+      var temp = this.state.seqSounds;
       this.setState({seqSounds: {}});
       temp[e.target.attributes[1].value] = ui.draggable.context.dataset.url;
       $(e.target).html(ui.draggable.context.innerHTML);
@@ -42,7 +42,7 @@ const Sounds = React.createClass({
     }
 
     else if (ui.draggable.context.dataset.url && e.target.attributes[0].value.includes('pad')) {
-      let temp = this.state.sounds;
+      var temp = this.state.sounds;
       $('p.inst').remove();
       this.setState({sounds: {}});
 
@@ -56,9 +56,9 @@ const Sounds = React.createClass({
 
   render: function() {
 
-    let that = this;
+    var that = this;
 
-    let seqs = Object.keys(this.state.seqSounds).map(id => {
+    var seqs = Object.keys(this.state.seqSounds).map(id => {
 
       return (
         <audio key={`audio${id}`} id={id}>

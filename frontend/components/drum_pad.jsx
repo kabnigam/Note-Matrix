@@ -10,7 +10,7 @@ const DrumPad = React.createClass({
   },
 
   _pressPad: function(e) {
-  let pad = KeyConstants[e.which];
+  var pad = KeyConstants[e.which];
   $(`li.pad[data-pad=${pad}]`).addClass('clicked');
   this._registerSound(pad);
 
@@ -18,14 +18,14 @@ const DrumPad = React.createClass({
     $('.pad-layout').effect("shake", {times: 30, distance: 1});
   }
   // else {
-  //   let color = '#'+Math.floor(Math.random()*16777215).toString(16);
+  //   var color = '#'+Math.floor(Math.random()*16777215).toString(16);
   //   $('body').attr('style', `background-color:${color}`);
   // }
 
 },
 
 _releasePad: function(e) {
-  let pad = KeyConstants[e.which];
+  var pad = KeyConstants[e.which];
   $(`li.pad[data-pad=${pad}]`).removeClass('clicked');
     // $('body').attr('style', `background-color:black`);
 },

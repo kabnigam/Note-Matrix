@@ -3,7 +3,7 @@ const NoteConstants = require('../constants/note_constants');
 
 const SeqRow = React.createClass({
   getInitialState: function() {
-    let clicked = [];
+    var clicked = [];
     if (this.props.clicked) {
       clicked = this.props.clicked;
     }
@@ -47,8 +47,8 @@ const SeqRow = React.createClass({
   _setNote: function(e) {
 
     this.props.setNote(e.target.value);
-    let clicked = [];
-    let ratio = e.target.value/this.state.note;
+    var clicked = [];
+    var ratio = e.target.value/this.state.note;
     for (var i = 0; i < $(e.target).parent().children().length; i++) {
       if ($(e.target).parent().children().eq(i).hasClass('clicked')) {
         clicked.push(i*ratio);
@@ -59,12 +59,12 @@ const SeqRow = React.createClass({
   },
 
   _makeRow: function() {
-    let row = [];
-    let ratio = parseInt(this.state.note)/4;
+    var row = [];
+    var ratio = parseInt(this.state.note)/4;
     this.width = 50/ratio;
 
 
-    let divStyle = {
+    var divStyle = {
       width: `${this.width}px`,
     };
 
@@ -87,7 +87,7 @@ const SeqRow = React.createClass({
 
 
   render: function() {
-    let row = this._makeRow();
+    var row = this._makeRow();
 
     for (var i = 0; i < row.length; i++) {
       if (this.state.clicked.includes(i)) {

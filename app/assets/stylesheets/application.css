@@ -390,3 +390,17 @@ left: 28%;
   display: none;
 
 }
+
+#warning {
+    /*position: absolute;*/
+    /*top: 40px;*/
+    background-color: #F44336;
+    text-align: center;
+    padding: 4px;
+    border-bottom: solid 4px #000066;
+    /*left: 25%;*/
+}
+
+#warning > h4 {
+  margin: 0;
+}

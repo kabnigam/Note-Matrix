@@ -19,13 +19,13 @@ const ToneMatrix = React.createClass({
     }
 
     var re = /\d+/;
-    let target_x = parseInt(e.target.attributes[0].value.match(re)[0]);
-    let target_y = parseInt(e.target.attributes[1].value.match(re)[0]);
+    var target_x = parseInt(e.target.attributes[0].value.match(re)[0]);
+    var target_y = parseInt(e.target.attributes[1].value.match(re)[0]);
 
 
-    let dirs = {'dirA': [target_x, target_y], 'dirB': [target_x, target_y], 'dirC': [target_x, target_y], 'dirE': [target_x, target_y], 'dirF': [target_x, target_y], 'dirG': [target_x, target_y], 'dirH': [target_x, target_y], 'dirD': [target_x, target_y]};
+    var dirs = {'dirA': [target_x, target_y], 'dirB': [target_x, target_y], 'dirC': [target_x, target_y], 'dirE': [target_x, target_y], 'dirF': [target_x, target_y], 'dirG': [target_x, target_y], 'dirH': [target_x, target_y], 'dirD': [target_x, target_y]};
 
-    let i = 0;
+    var i = 0;
     this.interval_boop = window.setInterval(this._splash.bind(null, dirs, i), 50);
   },
 
@@ -43,8 +43,8 @@ const ToneMatrix = React.createClass({
       dirs['dirG'] = [dirs['dirG'][0]+1, dirs['dirG'][1]-1];
       dirs['dirH'] = [dirs['dirH'][0], dirs['dirH'][1]-1];
       Object.keys(dirs).forEach(dir => {
-        let x = dirs[dir][1];
-        let y = dirs[dir][0];
+        var x = dirs[dir][1];
+        var y = dirs[dir][0];
         if ($(`#m${x}.mcol${y}`).css('background-color') !== "rgb(165, 163, 163)" &&
       $(`#m${x}.mcol${y}`).css('background-color') !== "rgb(255, 255, 255)") {
 
@@ -59,7 +59,7 @@ const ToneMatrix = React.createClass({
 
   _startPlaying: function() {
     this.timeout = ((60/140) * 1000) * 0.5;
-    let i = 0;
+    var i = 0;
 
     this.interval = window.setInterval(() => {
       this._playColumn(i % 32);
@@ -85,21 +85,21 @@ const ToneMatrix = React.createClass({
   },
 
   _playColumn: function(i) {
-    let pads = document.getElementsByClassName(`mcol${i%16 + 1}`);
-    let prev_pads = '';
+    var pads = document.getElementsByClassName(`mcol${i%16 + 1}`);
+    var prev_pads = '';
     if (i%16 === 0) {
       prev_pads = document.getElementsByClassName(`mcol${16}`);
     } else {
       prev_pads = document.getElementsByClassName(`mcol${i%16}`);
     }
-    let sounds = [];
+    var sounds = [];
     for (var j = 0; j < pads.length; j++) {
       if ($(prev_pads[j]).css('background-color') === "rgb(255, 255, 255)") {
         $(prev_pads[j]).css('background-color', "rgb(165, 163, 163)");
       }
       if ($(pads[j]).css('background-color') === "rgb(165, 163, 163)") {
         $(pads[j]).css('background-color', "rgb(255, 255, 255)");
-        let el = document.getElementById(`t${pads[j].attributes[1].value}`);
+        var el = document.getElementById(`t${pads[j].attributes[1].value}`);
         if (el.currentTime) {
           el.currentTime = 0;
         }
@@ -108,24 +108,24 @@ const ToneMatrix = React.createClass({
 
 
         var re = /\d+/;
-        let target_x = parseInt(pads[j].attributes[0].value.match(re)[0]);
-        let target_y = parseInt(pads[j].attributes[1].value.match(re)[0]);
+        var target_x = parseInt(pads[j].attributes[0].value.match(re)[0]);
+        var target_y = parseInt(pads[j].attributes[1].value.match(re)[0]);
 
-        let dirs = {'dirA': [target_x, target_y], 'dirB': [target_x, target_y], 'dirC': [target_x, target_y], 'dirE': [target_x, target_y], 'dirF': [target_x, target_y], 'dirG': [target_x, target_y], 'dirH': [target_x, target_y], 'dirD': [target_x, target_y]};
+        var dirs = {'dirA': [target_x, target_y], 'dirB': [target_x, target_y], 'dirC': [target_x, target_y], 'dirE': [target_x, target_y], 'dirF': [target_x, target_y], 'dirG': [target_x, target_y], 'dirH': [target_x, target_y], 'dirD': [target_x, target_y]};
 
 
 
-        let k = 0;
+        var k = 0;
         window.clearInterval(this.interval_boop);
         this.interval_boop = window.setInterval(this._splash.bind(null, dirs, k), 50);
       }
     }
     if (this.state.drums) {
 
-      let rows = $('ul.sequencer-row');
+      var rows = $('ul.sequencer-row');
       for (var j = 0;j < rows.length;j++) {
 
-        let ratio = 32/(rows[j].children.length - 1);
+        var ratio = 32/(rows[j].children.length - 1);
         if (i%ratio === 0) {
 
           if (i%(rows[j].children.length-1) === 0) {
@@ -158,7 +158,7 @@ const ToneMatrix = React.createClass({
     if (this.state.playing) {
       this._startPlaying();
     }
-    let drums = [];
+    var drums = [];
 
 
     if (this.state.drums) {
@@ -167,7 +167,7 @@ const ToneMatrix = React.createClass({
       $('.playback-buttons').css('display','block');
 
       }
-    let seqSounds = {
+    var seqSounds = {
       's-one': "https://s3-us-west-1.amazonaws.com/soundsamples/808_sub.mp3",
       's-two': "https://s3-us-west-1.amazonaws.com/soundsamples/Squad+Kick+3.mp3",
       's-three':'https://s3-us-west-1.amazonaws.com/soundsamples/Squad+Snare+5.wav',
@@ -175,7 +175,7 @@ const ToneMatrix = React.createClass({
       's-five': 'https://s3-us-west-1.amazonaws.com/soundsamples/Squad+HiHat+4.mp3',
       's-six':'https://s3-us-west-1.amazonaws.com/soundsamples/WOO.mp3',
       's-seven':'https://s3-us-west-1.amazonaws.com/soundsamples/LEX+Chant.mp3' };
-    let seqs = Object.keys(seqSounds).map(id => {
+    var seqs = Object.keys(seqSounds).map(id => {
 
       return (
         <audio key={`audio${id}`} id={id}>
@@ -184,7 +184,7 @@ const ToneMatrix = React.createClass({
       );
     });
 
-    let playback = <div key={'play'} className='playback-btn' onClick={this._handlePlay}><h2>Play</h2></div>;
+    var playback = <div key={'play'} className='playback-btn' onClick={this._handlePlay}><h2>Play</h2></div>;
     if (this.state.playing) {
       playback = <div key={'stop'} className='playback-btn' onClick={this._handleStop}><h2>Stop</h2></div>;
     }
